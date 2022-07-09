@@ -4,7 +4,7 @@ import FlipMove from "react-flip-move";
 export default function TodoItems({ entries, deleteItem, showBorder }) {
   const FunctionalEntry = forwardRef(({ id, text }, ref) => {
     return (
-      <li className={showBorder ? "theBorder" : "theBorderClear"}
+      <li className={showBorder ? "theBorder px-2 mt-1 mb-1 ms-2" : "theBorderClear px-2 mt-1 mb-1 ms-2"}
         ref={ref}
         onClick={() => {
           deleteItem(id);
@@ -17,7 +17,7 @@ export default function TodoItems({ entries, deleteItem, showBorder }) {
   FunctionalEntry.displayName = "fwdRef";
   
   return (
-    <ul className={showBorder ? "theList theBorder" : "theList theBorderClear"}>
+    <ul className={showBorder ? "theBorder" : "theBorderClear"}>
       <FlipMove>
         {entries.map(({ id, text }) => {
           return <FunctionalEntry key={id} id={id} text={text} />;

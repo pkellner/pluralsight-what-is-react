@@ -37,81 +37,59 @@ body {
     border: 3px solid #f15b2a;
 }
 
-.todoListMain  {
-    padding: 10px;
-    font-size: 16px;
-    //width: 450px;
-    height: 100%;
+input {
+    border: 2px solid #FFF;
+    width: 180px;
+    background-color: #E5E5E5;
 }
 
-.todoListMain .header  {
-    padding: 10px;
+.ulWidth {
+    width: 200px;
 }
 
-
-
-.todoListMain .header input {
-    padding: 10px;
+li {
+    color: #333;
+    /*padding: 10px;*/
     font-size: 16px;
     border: 2px solid #FFF;
-    width: 165px;
+    width: 155px;
     background-color: #E5E5E5;
-}
-.todoListMain .header button {
-    padding: 10px;
-    font-size: 16px;
-    margin: 10px;
-    margin-right: 0px;
-    background-color: #76CBE0;
-    color: #000;
-}
-.todoListMain .header button:hover {
-    background-color: #1f778d;
-    border: 2px solid #000;
-    cursor: pointer;
-}
-.todoListMain .theList {
-    list-style: none;
-    padding: 1px;
-    width: 250px;
-}
-
-
-
-.todoListMain .theList li {
-    color: #333;
-    background-color: #E5E5E5;
-    padding: 15px;
-    border-radius: 5px;
-    list-style: none;
-}
-
-ul.theList {
-    padding: 10px;
-}
-
-.theList li {
-    color: #333;
-    background-color: rgba(255,255,255,.5);
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+    list-style: square;
+    /*padding: 1px;*/
+    width: 200px;
     border-radius: 5px;
     transition: background-color .2s ease-out;
 }
 
-.todoListMain .theList li:hover {
+li:hover {
     background-color: #F15B2A;
     cursor: pointer;
 }
 
-.formElements {
-    padding: 15px;
-    margin-left: 5px;
-    /*margin-bottom: 10px;*/
-    /*margin-left: 10px;*/
-    /*margin-right: 10px;*/
-    /*border-radius: 5px;*/
+button {
+    background-color: #76CBE0;
+    color: #000;
 }
+button:hover {
+    background-color: #1f778d;
+    border: 2px solid #000;
+    cursor: pointer;
+}
+li {
+
+}
+
+
+
+/*.todoListMain .theList li {*/
+/*    color: #333;*/
+/*    background-color: #E5E5E5;*/
+/*    !*padding: 15px;*!*/
+/*    border-radius: 5px;*/
+/*    list-style: none;*/
+/*}*/
+
+/*ul.theList {*/
+/*    padding: 10px;*/
+/*}*/
+

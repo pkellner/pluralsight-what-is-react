@@ -16,23 +16,26 @@ const ToDoForm = ({ addTask, showBorder }) => {
   };
 
   const classN = showBorder
-    ? "formElements theBorder"
-    : "formElements theBorderClearx";
+    ? "theBorder px-2 mt-2 mb-2 ms-1"
+    : "theBorderClear px-2 mt-2 mb-2 ms-1";
 
   return (
     <form onSubmit={handleSubmit}>
-      <span className={classN}>
-        <input
-          value={userInput}
-          type="text"
-          onChange={handleChange}
-          placeholder="Enter new task"
-        />
-      </span>
+      <div className="row">
+        <div className="col-7">
+          <input
+            className={classN}
+            value={userInput}
+            type="text"
+            onChange={handleChange}
+            placeholder="Enter new task"
+          />
+        </div>
 
-      <span className={classN}>
-        <button>Add Item</button>
-      </span>
+        <div className="col-5">
+          <button className={classN}>Add Item</button>
+        </div>
+      </div>
     </form>
   );
 };

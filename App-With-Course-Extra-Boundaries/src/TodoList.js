@@ -25,6 +25,47 @@ export default function TodoList() {
   };
 
   return (
+    <div className="container">
+      <div className="row">
+        <button
+          className="invisibleButton"
+          onClick={() => {
+            setShowInvisibleButton(!showInvisibleButton);
+          }}
+        >
+          Toggle Show Button
+        </button>
+      </div>
+      <div className="row">
+        <button
+          className={showInvisibleButton ? "visibleButton" : "invisibleButton"}
+          onClick={() => {
+            setShowBorder(!showBorder);
+          }}
+        >
+          Show Component Borders
+        </button>
+      </div>
+      <div className="row">
+        <div className={showBorder ? "theBorder" : "theBorderClear"}>
+          <TodoForm addTask={addTask} showBorder={showBorder}></TodoForm>
+        </div>
+
+        <div className="row mt-1">
+          <hr />
+        </div>
+        <div className="row">
+          <TodoItems
+            entries={toDoList}
+            deleteItem={deleteItem}
+            showBorder={showBorder}
+          />
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
     <div>
       <button
         className="invisibleButton"
@@ -36,12 +77,9 @@ export default function TodoList() {
       </button>
       <div
         className={
-          showInvisibleButton && showBorder
-            ? "todoListMain theBorder"
-            : "todoListMain theBorderClear"
+          showInvisibleButton && showBorder ? " theBorder" : " theBorderClear"
         }
       >
-        
         <button
           className={showInvisibleButton ? "visibleButton" : "invisibleButton"}
           onClick={() => {
@@ -53,13 +91,13 @@ export default function TodoList() {
         <div
           className={
             showBorder
-              ? "todoListMain theBorder"
-              : "todoListMain theBorderClear"
+              ? "todoListMainx theBorder"
+              : "todoListMainx theBorderClear"
           }
         >
           <div
             className={
-              showBorder ? "header theBorder" : "header theBorderClear"
+              showBorder ? "headerx theBorder" : "headerx theBorderClear"
             }
           >
             <TodoForm addTask={addTask} showBorder={showBorder}></TodoForm>
