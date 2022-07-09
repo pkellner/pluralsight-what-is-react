@@ -3,12 +3,12 @@ import TodoItems from "./TodoItems";
 import TodoForm from "./TodoForm";
 
 export default function TodoList() {
-  const [showBorder, setShowBorder] = useState(false);
+  const [showBorder, setShowBorder] = useState(true);
   const [showInvisibleButton, setShowInvisibleButton] = useState(false);
   const [toDoList, setToDoList] = useState([
     { text: "Buy Sugar", id: 1656632538430 },
     { text: "Eat Carrots", id: 1656632478827 },
-    { text: "Return Artichoke", id: 1656632472927 },
+    // { text: "Return Oats", id: 1656632472927 },
   ]);
 
   function deleteItem(id) {
@@ -32,9 +32,7 @@ export default function TodoList() {
           setShowInvisibleButton(!showInvisibleButton);
         }}
       >
-        Invisible Button to Toggle
-        <br />
-        the Other Invisible Button
+        Toggle Show Button
       </button>
       <div
         className={
@@ -44,7 +42,6 @@ export default function TodoList() {
         }
       >
         
-        <br />
         <button
           className={showInvisibleButton ? "visibleButton" : "invisibleButton"}
           onClick={() => {
@@ -65,7 +62,7 @@ export default function TodoList() {
               showBorder ? "header theBorder" : "header theBorderClear"
             }
           >
-            <TodoForm addTask={addTask}></TodoForm>
+            <TodoForm addTask={addTask} showBorder={showBorder}></TodoForm>
           </div>
           <hr />
           <TodoItems
@@ -78,3 +75,13 @@ export default function TodoList() {
     </div>
   );
 }
+
+/*
+
+Add "Return Oats"
+Delete Eat Carrots
+Delete Buy Sugar
+Buy Gas
+
+
+ */

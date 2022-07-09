@@ -15,7 +15,7 @@ export default function TodoItems({ entries, deleteItem, showBorder }) {
     );
   });
   FunctionalEntry.displayName = "fwdRef";
-
+  
   return (
     <ul className={showBorder ? "theList theBorder" : "theList theBorderClear"}>
       <FlipMove>
