@@ -39,23 +39,17 @@ body {
 
 input {
     border: 2px solid #FFF;
-    width: 180px;
+    width: 160px;
     background-color: #E5E5E5;
-}
-
-.ulWidth {
-    width: 200px;
 }
 
 li {
     color: #333;
-    /*padding: 10px;*/
     font-size: 16px;
     border: 2px solid #FFF;
     width: 155px;
     background-color: #E5E5E5;
-    list-style: square;
-    /*padding: 1px;*/
+    list-style: none;
     width: 200px;
     border-radius: 5px;
     transition: background-color .2s ease-out;
@@ -66,11 +60,11 @@ li:hover {
     cursor: pointer;
 }
 
-button {
+form button {
     background-color: #76CBE0;
     color: #000;
 }
-button:hover {
+form button:hover {
     background-color: #1f778d;
     border: 2px solid #000;
     cursor: pointer;
@@ -78,18 +72,3 @@ button:hover {
 li {
 
 }
-
-
-
-/*.todoListMain .theList li {*/
-/*    color: #333;*/
-/*    background-color: #E5E5E5;*/
-/*    !*padding: 15px;*!*/
-/*    border-radius: 5px;*/
-/*    list-style: none;*/
-/*}*/
-
-/*ul.theList {*/
-/*    padding: 10px;*/
-/*}*/
-

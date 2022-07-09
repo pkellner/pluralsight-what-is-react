@@ -17,7 +17,8 @@ export default function TodoItems({ entries, deleteItem, showBorder }) {
   FunctionalEntry.displayName = "fwdRef";
   
   return (
-    <ul className={showBorder ? "theBorder" : "theBorderClear"}>
+    <ul className="mt-3">
+      <b className="ms-3">Items:</b>
       <FlipMove>
         {entries.map(({ id, text }) => {
           return <FunctionalEntry key={id} id={id} text={text} />;

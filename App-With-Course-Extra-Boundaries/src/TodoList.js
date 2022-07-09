@@ -25,36 +25,50 @@ export default function TodoList() {
   };
 
   return (
-    <div className="container">
-      <div className="row">
-        <button
-          className="invisibleButton"
-          onClick={() => {
-            setShowInvisibleButton(!showInvisibleButton);
-          }}
-        >
-          Toggle Show Button
-        </button>
-      </div>
-      <div className="row">
-        <button
-          className={showInvisibleButton ? "visibleButton" : "invisibleButton"}
-          onClick={() => {
-            setShowBorder(!showBorder);
-          }}
-        >
-          Show Component Borders
-        </button>
-      </div>
-      <div className="row">
-        <div className={showBorder ? "theBorder" : "theBorderClear"}>
-          <TodoForm addTask={addTask} showBorder={showBorder}></TodoForm>
-        </div>
-
-        <div className="row mt-1">
-          <hr />
+    <>
+      <div className="container">
+        <div className="row">
+          <button
+            className="invisibleButton"
+            onClick={() => {
+              setShowInvisibleButton(!showInvisibleButton);
+            }}
+          >
+            Toggle Show Button
+          </button>
         </div>
         <div className="row">
+          <button
+            className={
+              showInvisibleButton ? "visibleButton" : "invisibleButton"
+            }
+            onClick={() => {
+              setShowBorder(!showBorder);
+            }}
+          >
+            Show Component Borders
+          </button>
+        </div>
+      </div>
+      <div
+        className={
+          showBorder ? "container theBorder" : "container theBorderClear"
+        }
+      >
+        <div
+          className={
+            showBorder ? "row theBorder mb-1 ms-1 me-1 mt-2" : "row theBorderClear mb-1 ms-1 me-1 mt-2"
+          }
+        >
+          <div>
+            <TodoForm addTask={addTask} showBorder={showBorder}></TodoForm>
+          </div>
+        </div>
+        <div
+          className={
+            showBorder ? "row theBorder mb-3 ms-1 me-1 mt-3" : "row theBorderClear mb-3 ms-1 me-1 mt-3"
+          }
+        >
           <TodoItems
             entries={toDoList}
             deleteItem={deleteItem}
@@ -62,7 +76,7 @@ export default function TodoList() {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 
   return (
