@@ -38,9 +38,9 @@ body {
 }
 
 input {
-    border: 2px solid #FFF;
+    border: 2px solid #DDD;
     width: 160px;
-    background-color: #E5E5E5;
+    background-color: #ebebeb;
 }
 
 li {
@@ -48,7 +48,7 @@ li {
     font-size: 16px;
     border: 2px solid #FFF;
     width: 155px;
-    background-color: #E5E5E5;
+    background-color: #c8c8c8;
     list-style: none;
     width: 200px;
     border-radius: 5px;
@@ -68,7 +68,4 @@ form button:hover {
     background-color: #1f778d;
     border: 2px solid #000;
     cursor: pointer;
-}
-li {
-
 }
