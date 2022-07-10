@@ -5,47 +5,10 @@ body {
     margin-bottom: 10px;
 }
 
-.invisibleButton {
-    background-color: #FFFFFF;
-    border: #76CBE0;
-    color: #FFFFFF;
-    background-color: #FFFFFF;
-    font-size: 18px;
-    margin: 30px;
-    border: 2px solid #FFFFFF;
-    cursor: pointer;
-    padding: 10px;
-}
-
-.visibleButton {
-    background-color: #76CBE0;
-    border: #76CBE0;
-    color: #000;
-    background-color: #76CBE0;
-    font-size: 18px;
-    margin: 30px;
-    border: 2px solid #000;
-    cursor: pointer;
-    padding: 10px;
-}
-
-.theBorderClear {
-    border: 3px solid #FFFFFF
-}
-
-.theBorder {
-    border: 3px solid #f15b2a;
-}
-
 input {
     border: 2px solid #DDD;
     width: 160px;
     background-color: #ebebeb;
-}
-
-.forceSize {
-    height: 168px;
-    width: 427px;
 }
 
 li {

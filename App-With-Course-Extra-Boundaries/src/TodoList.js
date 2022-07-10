@@ -66,7 +66,7 @@ export default function TodoList() {
         </div>
         <div
           className={
-            showBorder ? "row theBorder mb-3 ms-1 me-1 mt-3" : "row theBorderClear mb-3 ms-1 me-1 mt-3"
+            showBorder ? "row theBorder mb-3 ms-1 me-1 mt-3 forceSize" : "row theBorderClear mb-3 ms-1 me-1 mt-3 forceSize"
           }
         >
           <TodoItems
@@ -130,10 +130,14 @@ export default function TodoList() {
 
 /*
 
+EDGE 300% 4K monitor that records at 4K (center)
+
 Add "Return Oats"
 Delete Eat Carrots
 Delete Buy Sugar
-Buy Gas
-
-
+Add Buy Gas
+Add Eat Carrots
+Delete Buy Gas
+Add Buy Sugar
+Delete Return Oats
  */
