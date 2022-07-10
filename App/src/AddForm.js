@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import {FormInputField} from "./FormInputField";
+import {FormSubmitButton} from "./FormSubmitButton";
 
-const AddForm = ({ addTask, showBorder }) => {
+const AddForm = ({ addTask }) => {
   const [userInput, setUserInput] = useState("");
 
   const handleChange = (e) => {
@@ -15,25 +17,15 @@ const AddForm = ({ addTask, showBorder }) => {
     setUserInput("");
   };
 
-  const classN = showBorder
-    ? "theBorder px-2 mt-2 mb-2 ms-1"
-    : "theBorderClear px-2 mt-2 mb-2 ms-1";
-
   return (
     <form onSubmit={handleSubmit}>
       <div className="row">
         <div className="col-7">
-          <input
-            className={classN}
-            value={userInput}
-            type="text"
-            onChange={handleChange}
-            placeholder="Enter new task"
-          />
+          <FormInputField value={userInput} onChange={handleChange} />
         </div>
 
         <div className="col-5">
-          <button className={classN}>Add Item</button>
+          <FormSubmitButton />
         </div>
       </div>
     </form>
