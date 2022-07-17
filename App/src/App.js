@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import TodoItems from "./TodoItems";
-import TodoForm from "./AddForm";
+import AddForm from "./AddForm";
 
 export default function App() {
   const [toDoList, setToDoList] = useState([
@@ -20,7 +20,7 @@ export default function App() {
   return (
     <div className="container">
       <div className="row mb-1 ms-1 me-1 mt-2">
-        <TodoForm addTask={addTask}></TodoForm>
+        <AddForm addTask={addTask}></AddForm> 
       </div>
       <div className="row mb-3 ms-1 me-1 mt-3">
         <TodoItems entries={toDoList} deleteItem={deleteItem} />
