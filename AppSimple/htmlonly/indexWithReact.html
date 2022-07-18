@@ -19,19 +19,11 @@
     <script>
       const rootElement = document.getElementById("root");
       const root = ReactDOM.createRoot(rootElement);
-      const childrenElements = [...Array(10000).keys()].map((id) => {
+      const childrenElements = [...Array(10).keys()].map((id) => {
         return React.createElement("li", { key: id }, id);
       });
-      const element = React.createElement("ul", null, childrenElements);
-      root.render(element);
-    </script>
-
-    <script>
-      var renderStart = new Date().getTime();
-      window.onload = function () {
-        var elapsed = new Date().getTime() - renderStart;
-        console.log("WithReact: Rendered in " + elapsed + "ms");
-      };
+      //const element = React.createElement("ul", null, childrenElements);
+      root.render(childrenElements);
     </script>
   </body>
 </html>
