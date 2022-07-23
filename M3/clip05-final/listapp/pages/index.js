@@ -1,8 +1,8 @@
 export default function Home() {
-  const arrayOfNumbers = [...Array(10).keys()];
+  const ints = [1,2,3];
   return (
     <ul>
-      {arrayOfNumbers.map((id) => {
+      {ints.map((id) => {
         return <li>{`id: ${id}  square rt: ${(id ** 0.5).toFixed(3)}`}</li>;
       })}
     </ul>
