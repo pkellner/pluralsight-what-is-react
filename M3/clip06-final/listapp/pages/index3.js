@@ -2,7 +2,14 @@ import {useState} from "react";
 
 export default function Home() {
   
-  function ListItems({ints, addValue}) {
+  function ListItems() {
+
+    const [ints, setInts] = useState([1,2,3]);
+
+    function addValue() {
+      const newVal = Math.max(...ints) + 1;
+      setInts([...ints,newVal]);
+    }
 
     return (
       <>
@@ -16,17 +23,12 @@ export default function Home() {
     )
   }
 
-  const [ints, setInts] = useState([1,2,3]);
 
-  function addValue() {
-    const newVal = Math.max(...ints) + 1;
-    setInts([...ints,newVal]);
-  }
 
   
   return (
     <ul>
-      <ListItems ints={ints} addValue={addValue} />
+      <ListItems />
     </ul>
   );
 }

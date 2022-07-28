@@ -12,7 +12,7 @@ export default function TodoItems({ entries, deleteItem }) {
             onClick={() => {
               deleteItem(id);
             }}
-          >
+          > 
             {text}
           </li>
         );
