@@ -1,6 +1,9 @@
 import React from "react";
 
-export default function TodoItems({ entries, deleteItem }) {
+export default function TodoItems(props) {
+  const entries = props.entries;
+  const deleteItem = props.deleteItem;
+  
   return (
     <ul className="mt-3">
       <b className="ms-3">Items:</b>
