@@ -8,6 +8,14 @@ The master branch here is the latest updates to the Pluralsight course <b>What I
 <br/>
 This GitHub repo includes the final code for all the modules in the course 
 
+# Recently Released Courses From Peter Kellner
+
+| **Course**                                                                           | Release Date  |
+|--------------------------------------------------------------------------------------|---------------|
+| **[Using Hooks in React 18](https://pluralsight.com/courses/react-18-using-hooks/)** | November 2022 |
+| **[What's New in React 18](https://pluralsight.com/courses/react-18-whats-new/)**    | May 2022      |
+
+
 ## Course Description
 
 This course will teach you what  React is, and help you  understand why React is the number one  JavaScript library for building JavaScript Apps in a browser.
