@@ -1,16 +1,17 @@
-# Course Code for [What is React](https://app.pluralsight.com/library/courses/what-is-react) on Pluralsight
+# Course Code for [What is React](https://pluralsight.com/courses/what-is-react) on Pluralsight
 
-The master branch here is the latest updates to the Pluralsight course <b>What Is React</b>. This GitHub repo includes the final code for all the modules in the course.
-
-## Recently Released Courses From Peter Kellner
+## OTHER Recently Released Courses From Peter Kellner
 
 | **Course**                                                                           | Release Date  |
 |-------------------------------------------------------------------------------------------------------------------------------|---------------|
 | **[Using Hooks in React 18](https://pluralsight.com/courses/react-18-using-hooks/)**                                          | November 2022 |
-| **[What is React](https://pluralsight.com/courses/react-what-is/)**                                                           | August 2022   |
+| **[What is React](https://pluralsight.com/courses/react-what-is/)**  *(this course)*                                          | August 2022   |
 | **[What's New in React 18](https://pluralsight.com/courses/react-18-whats-new/)**                                             | May 2022      |
 | **[Data and UI Patterns in React](https://github.com/pkellner/pluralsight-building-essential-ui-data-elements-in-react/)**    | December 2021 |
 
+<hr/>
+
+The master branch here is the latest updates to the Pluralsight course <b>What Is React</b>. This GitHub repo includes the final code for all the modules in the course.
 
 ## Course Description
 
