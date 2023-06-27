@@ -4,6 +4,7 @@
 
 | **Course**                                                                           | Release Date  |
 |-------------------------------------------------------------------------------------------------------------------------------|---------------|
+| **[Server Component Fundamentals in React 18](http://www.pluralsight.com/courses/react-18-server-component-fundamentals)**    | June 2023     |
 | **[Working with Components in React 18](https://pluralsight.com/courses/react-18-working-components/)**                       | February 2023 |
 | **[Using Hooks in React 18](https://pluralsight.com/courses/react-18-using-hooks/)**                                          | November 2022 |
 | **[What is React](https://pluralsight.com/courses/react-what-is/)**  *(this course)*                                          | August 2022   |
