@@ -1,0 +1,39 @@
+body {
+    padding: 50px;
+    background-color: #FFFFFF;
+    font-family: sans-serif;
+    margin-bottom: 10px;
+}
+
+input {
+    border: 2px solid #DDD;
+    width: 160px;
+    background-color: #ebebeb;
+}
+
+li {
+    color: #333;
+    font-size: 16px;
+    border: 2px solid #FFF;
+    width: 155px;
+    background-color: #c8c8c8;
+    list-style: none;
+    width: 200px;
+    border-radius: 5px;
+    transition: background-color .2s ease-out;
+}
+
+li:hover {
+    background-color: #F15B2A;
+    cursor: pointer;
+}
+
+form button {
+    background-color: #76CBE0;
+    color: #000;
+}
+form button:hover {
+    background-color: #1f778d;
+    border: 2px solid #000;
+    cursor: pointer;
+}
