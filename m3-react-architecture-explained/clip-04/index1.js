@@ -1,6 +1,6 @@
 window.onload = () => {
   const rootElement = document.getElementById("root");
-  const root = ReactDOM.createRoot(rootElement);
+  const root = ReactDOMClient.createRoot(rootElement);
 
   const ints = [1, 2, 3];
 
