@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { towersOfHanoi } from "../../utils/tower-of-hanoi";
 
 const numberOfDisks = 3; // Adjust this as needed
@@ -27,6 +27,8 @@ export default function Test() {
     B: [],
     C: [],
   });
+  const [currentMoveIndex, setCurrentMoveIndex] = useState<number>(0);
+  const animationRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const hanoiResult = towersOfHanoi(numberOfDisks, true);
@@ -34,11 +36,33 @@ export default function Test() {
 
     if (hanoiResult.moveDetails) {
       setPegs(hanoiResult.moveDetails[0].pegs);
+      animateMoves(hanoiResult.moveDetails);
     }
+
+    return () => {
+      if (animationRef.current) clearTimeout(animationRef.current);
+    };
   }, []);
+
+  const animateMoves = (moves: Move[]) => {
+    if (moves.length === 0) return;
+    let index = 0;
+
+    const animate = () => {
+      setPegs(moves[index].pegs);
+      setCurrentMoveIndex(index);
+      index += 1;
+      if (index < moves.length) {
+        animationRef.current = setTimeout(animate, 1000); // Adjust the interval as needed
+      }
+    };
+
+    animate();
+  };
 
   const handleMoveClick = (move: Move) => {
     setPegs(move.pegs);
+    setCurrentMoveIndex(move.moveNumber - 1);
   };
 
   return (
@@ -53,7 +77,7 @@ export default function Test() {
       >
         <div
           style={{
-            width: "20%",
+            width: "30%",
             overflowY: "scroll",
             padding: "1rem",
             boxSizing: "border-box",
@@ -70,16 +94,17 @@ export default function Test() {
               <p>Duration: {result.duration}</p>
               {result.moveDetails && (
                 <ul style={{ listStyle: "none", padding: 0 }}>
-                  {result.moveDetails.map((move) => (
+                  {result.moveDetails.map((move, index) => (
                     <li
                       key={move.moveNumber}
                       onClick={() => handleMoveClick(move)}
                       style={{
                         margin: "0.5rem 0",
                         padding: "0.5rem",
-                        backgroundColor: "#e9ecef",
+                        backgroundColor: currentMoveIndex === index ? "#a9def9" : "#e9ecef",
                         cursor: "pointer",
                         borderRadius: "4px",
+                        transition: 'background-color 0.3s ease-in-out', // Smooth transition for background color
                       }}
                     >
                       {move.moveDescription}
@@ -138,6 +163,7 @@ export default function Test() {
                           transform: "translateX(-50%)",
                           fontSize: "1.2rem",
                           borderRadius: "4px",
+                          transition: 'all 0.5s ease-in-out', // Add transition for smooth animation
                         }}
                       >
                         {disk}
