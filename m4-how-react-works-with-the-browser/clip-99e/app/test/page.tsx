@@ -49,11 +49,32 @@ export default function Test() {
     let index = 0;
 
     const animate = () => {
-      setPegs(moves[index].pegs);
-      setCurrentMoveIndex(index);
-      index += 1;
-      if (index < moves.length) {
-        animationRef.current = setTimeout(animate, 1000); // Adjust the interval as needed
+      const move = moves[index];
+      const diskElement = document.getElementById(`disk-${move.disk}`);
+      const targetPeg = document.getElementById(`peg-${move.to}`);
+
+      if (diskElement && targetPeg) {
+        const targetRect = targetPeg.getBoundingClientRect();
+        const diskRect = diskElement.getBoundingClientRect();
+
+        const moveX = targetRect.left - diskRect.left + (targetRect.width - diskRect.width) / 2;
+        const moveY = targetRect.top - diskRect.top + (targetRect.height - diskRect.height);
+
+        diskElement.style.transform = `translate(${moveX}px, ${moveY}px)`;
+
+        setTimeout(() => {
+          setPegs(move.pegs);
+          setCurrentMoveIndex(index);
+          index += 1;
+          if (index < moves.length) {
+            animationRef.current = setTimeout(animate, 1000); // Adjust the interval as needed
+          }
+        }, 500); // Adjust the delay as needed
+      } else {
+        index += 1;
+        if (index < moves.length) {
+          animationRef.current = setTimeout(animate, 1000); // Adjust the interval as needed
+        }
       }
     };
 
@@ -132,7 +153,7 @@ export default function Test() {
             }}
           >
             {["A", "B", "C"].map((peg) => (
-              <div key={peg} style={{ textAlign: "center" }}>
+              <div key={peg} style={{ textAlign: "center" }} id={`peg-${peg}`}>
                 <h2>{peg}</h2>
                 <div
                   style={{
@@ -149,6 +170,7 @@ export default function Test() {
                     .map((disk, index, arr) => (
                       <div
                         key={disk}
+                        id={`disk-${disk}`}
                         style={{
                           width: `${60 + disk * 10}%`, // Width based on disk size
                           height: "30px",
