@@ -1,0 +1,34 @@
+'use client';
+import { useState } from 'react';
+
+export default function ListItems({initialInts}) {
+
+  const [ints, setInts] = useState(initialInts);
+
+  function ListItems({ints, addValue}) {
+    const increment = 3;
+    return (
+      <>
+        <button onClick={() => addValue(increment)}>Add Item</button>
+        {
+          ints.map(id => {
+            return (
+              <li key={id}>{id}</li>
+            )
+          })
+        }
+      </>
+    )
+  }
+
+
+  function addValue(incrementValue) {
+    const newVal = Math.max(...ints) + incrementValue;
+    setInts([...ints, newVal]);
+  }
+  return (
+    <ul>
+      <ListItems ints={ints} addValue={addValue} />
+    </ul>
+  )
+}
