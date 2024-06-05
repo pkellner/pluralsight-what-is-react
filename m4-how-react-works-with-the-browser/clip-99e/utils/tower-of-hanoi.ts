@@ -10,7 +10,8 @@ export function towersOfHanoi(n: number, returnMoves: boolean = false) {
   }> = [];
   const pegs: { [key: string]: number[] } = { A: [], B: [], C: [] };
 
-  for (let i = n; i >= 1; i--) {
+  // Initialize the pegs with disks in reverse order (1 at the top, 3 at the bottom)
+  for (let i = 1; i <= n; i++) {
     pegs['A'].push(i);
   }
 
@@ -35,8 +36,10 @@ export function towersOfHanoi(n: number, returnMoves: boolean = false) {
     hanoi(n - 1, source, auxiliary, target);
 
     moveCount++;
-    const disk = pegs[source].pop()!;
-    pegs[target].push(disk);
+    // Move the first (bottom) disk from the source peg
+    const disk = pegs[source].shift()!;
+    pegs[target].unshift(disk); // Place it on the target peg at the beginning
+
     moves.push({
       moveNumber: moveCount,
       disk: disk,
@@ -54,7 +57,7 @@ export function towersOfHanoi(n: number, returnMoves: boolean = false) {
   }
 
   const startTime = Date.now();
-  hanoi(n, 'A', 'C', 'B');
+  hanoi(n, 'A', 'C', 'B'); // Solve the puzzle
   const endTime = Date.now();
   const duration = ((endTime - startTime) / 1000).toFixed(2);
 
