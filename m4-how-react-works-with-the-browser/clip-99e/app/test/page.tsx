@@ -57,23 +57,26 @@ export default function Test() {
         const targetRect = targetPeg.getBoundingClientRect();
         const diskRect = diskElement.getBoundingClientRect();
 
-        const moveX = targetRect.left - diskRect.left + (targetRect.width - diskRect.width) / 2;
-        const moveY = targetRect.top - diskRect.top + (targetRect.height - diskRect.height);
+        const moveX = (targetRect.left - diskRect.left - (targetRect.width - diskRect.width) / 2) + 43;
+        const moveY = (targetRect.top + targetPeg.clientHeight - diskRect.height * (pegs[move.to].length + 1) - diskRect.top) - 300;
 
+        diskElement.style.transition = "transform 0.7s ease-in-out";
+        diskElement.style.zIndex = "10"; // Ensure moving disk is above others
         diskElement.style.transform = `translate(${moveX}px, ${moveY}px)`;
 
         setTimeout(() => {
           setPegs(move.pegs);
           setCurrentMoveIndex(index);
+          diskElement.style.zIndex = ""; // Reset zIndex after move
           index += 1;
           if (index < moves.length) {
-            animationRef.current = setTimeout(animate, 1000); // Adjust the interval as needed
+            animationRef.current = setTimeout(animate, 700); // Adjust the interval as needed
           }
         }, 500); // Adjust the delay as needed
       } else {
         index += 1;
         if (index < moves.length) {
-          animationRef.current = setTimeout(animate, 1000); // Adjust the interval as needed
+          animationRef.current = setTimeout(animate, 700); // Adjust the interval as needed
         }
       }
     };
@@ -81,9 +84,10 @@ export default function Test() {
     animate();
   };
 
-  const handleMoveClick = (move: Move) => {
-    setPegs(move.pegs);
-    setCurrentMoveIndex(move.moveNumber - 1);
+  const handleMoveClick = (move: Move, event: React.MouseEvent) => {
+    event.stopPropagation();
+    setPegs(prevPegs => move.pegs);
+    setCurrentMoveIndex(prevIndex => move.moveNumber );
   };
 
   return (
@@ -118,14 +122,14 @@ export default function Test() {
                   {result.moveDetails.map((move, index) => (
                     <li
                       key={move.moveNumber}
-                      onClick={() => handleMoveClick(move)}
+                      onClick={(event) => handleMoveClick(move, event)}
                       style={{
                         margin: "0.5rem 0",
                         padding: "0.5rem",
                         backgroundColor: currentMoveIndex === index ? "#a9def9" : "#e9ecef",
                         cursor: "pointer",
                         borderRadius: "4px",
-                        transition: 'background-color 0.3s ease-in-out', // Smooth transition for background color
+                        transition: 'background-color 0.5s ease-in-out', // Smooth transition for background color
                       }}
                     >
                       {move.moveDescription}
@@ -172,7 +176,7 @@ export default function Test() {
                         key={disk}
                         id={`disk-${disk}`}
                         style={{
-                          width: `${60 + disk * 10}%`, // Width based on disk size
+                          width: `${50 + ((disk - 1) / (numberOfDisks - 1)) * 40}%`,
                           height: "30px",
                           backgroundColor: "#6c757d",
                           color: "white",
