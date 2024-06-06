@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { towersOfHanoi } from "../../utils/tower-of-hanoi";
+import { towersOfHanoi } from "../../utils/towers-of-hanoi";
 
-const numberOfDisks = 3; // Adjust this as needed
+const numberOfDisks = 9; // Adjust this as needed
 
 type Move = {
   moveNumber: number;

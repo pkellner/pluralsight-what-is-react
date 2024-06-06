@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import {
   towersOfHanoi,
   towersOfHanoiPromise,
-} from "../../utils/tower-of-hanoi";
+  towersOfHanoiByNumberDisks,
+} from "../../utils/towers-of-hanoi";
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -34,12 +35,18 @@ function ListItemsTowerOfHanoi({
   const handleAddMore = () => {
     async function go() {
       setAdding(true);
-      await sleep(1000);
+      // await sleep(1000);
+      const newRow = await towersOfHanoiByNumberDisks(nextDiskCount, false);
       if (nextDiskCount <= maxDiskCount) {
         setNextDiskCount((prevCount) => prevCount + 1);
         setResults((prevResults) => [
           ...prevResults,
-          { disks: nextDiskCount, moves: 0, duration: "N/A" },
+          {
+            disks: nextDiskCount,
+            moves: newRow.moves,
+            duration: newRow.duration,
+          },
+          // { disks: nextDiskCount, moves: 0, duration: "N/A" },
         ]);
       }
       setAdding(false);
@@ -72,16 +79,18 @@ function ListItemsTowerOfHanoi({
                   <td>{result.duration}</td>
                 </tr>
               ))}
-              <tr className="add-more-row">
-                <td colSpan={3}>
-                  <button
-                    onClick={adding === false ? handleAddMore : undefined}
-                    disabled={adding === true}
-                  >
-                    {adding === false ? "Add More" : "Adding..."}
-                  </button>
-                </td>
-              </tr>
+              {nextDiskCount <= maxDiskCount && (
+                <tr className="add-more-row">
+                  <td colSpan={3}>
+                    <button
+                      onClick={adding === false ? handleAddMore : undefined}
+                      disabled={adding === true}
+                    >
+                      {adding === false ? "Add More" : "Adding..."}
+                    </button>
+                  </td>
+                </tr>
+              )}
             </>
           )}
         </tbody>
@@ -93,9 +102,9 @@ function ListItemsTowerOfHanoi({
 export default function Page() {
   return (
     <ListItemsTowerOfHanoi
-      startDisksCnt={1}
-      startingMaxDiskCount={3}
-      maxDiskCount={10}
+      startDisksCnt={15}
+      startingMaxDiskCount={18}
+      maxDiskCount={21}
     />
   );
 }

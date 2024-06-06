@@ -85,3 +85,16 @@ export function towersOfHanoiPromise(n: number, returnMoves: boolean = false): P
     }
   });
 }
+
+
+export function towersOfHanoiByNumberDisks(n: number): Promise<{ moves: number, duration: string }> {
+  return new Promise((resolve, reject) => {
+    towersOfHanoiPromise(n)
+      .then(result => {
+        resolve({ moves: result.moves, duration: result.duration });
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+}
