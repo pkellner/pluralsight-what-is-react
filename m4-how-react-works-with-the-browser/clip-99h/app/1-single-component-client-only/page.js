@@ -29,11 +29,11 @@ function ListItemsTowerOfHanoi({ startDisksCnt, startingMaxDiskCount, maxDiskCou
     if (nextDiskCount <= maxDiskCount) {
       setAdding(true);
       setTimeout(() => {
+        setNextDiskCount(prevCount => prevCount + 1);
         setResults(prevResults => [
           ...prevResults,
           { disks: nextDiskCount, moves: 0, duration: "N/A" },
         ]);
-        setNextDiskCount(nextDiskCount + 1);
         setAdding(false);
       }, 500);
     }
@@ -51,34 +51,36 @@ function ListItemsTowerOfHanoi({ startDisksCnt, startingMaxDiskCount, maxDiskCou
         </tr>
         </thead>
         <tbody>
-        {loading === false ? (
-          results.map((result, index) => (
-            <tr key={index}>
-              <td>{result.disks}</td>
-              <td>{result.moves.toLocaleString()}</td>
-              <td>{result.duration}</td>
-            </tr>
-          ))
-        ) : (
+        {loading ? (
           <tr>
             <td colSpan={3}>Loading...</td>
           </tr>
-        )}
-        {nextDiskCount <= maxDiskCount && !adding && (
-          <tr className="add-more-row">
-            <td colSpan={3}>
-              <button onClick={handleAddMore}>
-                Add More
-              </button>
-            </td>
-          </tr>
-        )}
-        {adding && (
-          <tr className="fade-in">
-            <td>{nextDiskCount - 1}</td>
-            <td>0</td>
-            <td>N/A</td>
-          </tr>
+        ) : (
+          <>
+            {results.map((result) => (
+              <tr key={result.disks}>
+                <td>{result.disks}</td>
+                <td>{result.moves.toLocaleString()}</td>
+                <td>{result.duration}</td>
+              </tr>
+            ))}
+            {adding && (
+              <tr className="fade-in">
+                <td>{nextDiskCount - 1}</td>
+                <td>0</td>
+                <td>N/A</td>
+              </tr>
+            )}
+            {!adding && nextDiskCount <= maxDiskCount && (
+              <tr className="add-more-row">
+                <td colSpan={3}>
+                  <button onClick={handleAddMore}>
+                    Add More
+                  </button>
+                </td>
+              </tr>
+            )}
+          </>
         )}
         </tbody>
       </table>
