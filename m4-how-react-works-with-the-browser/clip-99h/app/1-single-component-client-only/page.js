@@ -52,8 +52,8 @@ function ListItemsTowerOfHanoi({ startDisksCnt, startingMaxDiskCount, maxDiskCou
         </thead>
         <tbody>
         {loading === false ? (
-          results.map((result) => (
-            <tr key={result.disks}>
+          results.map((result, index) => (
+            <tr key={index}>
               <td>{result.disks}</td>
               <td>{result.moves.toLocaleString()}</td>
               <td>{result.duration}</td>
@@ -64,7 +64,7 @@ function ListItemsTowerOfHanoi({ startDisksCnt, startingMaxDiskCount, maxDiskCou
             <td colSpan={3}>Loading...</td>
           </tr>
         )}
-        {nextDiskCount <= maxDiskCount && loading === false && !adding && (
+        {nextDiskCount <= maxDiskCount && !adding && (
           <tr className="add-more-row">
             <td colSpan={3}>
               <button onClick={handleAddMore}>
@@ -74,22 +74,11 @@ function ListItemsTowerOfHanoi({ startDisksCnt, startingMaxDiskCount, maxDiskCou
           </tr>
         )}
         {adding && (
-          <>
-            <tr className="fade-in">
-              <td>{nextDiskCount - 1}</td>
-              <td>0</td>
-              <td>N/A</td>
-            </tr>
-            {nextDiskCount <= maxDiskCount && adding === false && (
-              <tr className="add-more-row fade-in">
-                <td colSpan={3}>
-                  <button onClick={handleAddMore} disabled={adding}>
-                    Add More
-                  </button>
-                </td>
-              </tr>
-            )}
-          </>
+          <tr className="fade-in">
+            <td>{nextDiskCount - 1}</td>
+            <td>0</td>
+            <td>N/A</td>
+          </tr>
         )}
         </tbody>
       </table>
