@@ -5,7 +5,13 @@ import {
   towersOfHanoiPromise,
 } from "../../utils/tower-of-hanoi";
 
-function ListItemsTowerOfHanoi({ startDisksCnt, startingMaxDiskCount, maxDiskCount }) {
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+function ListItemsTowerOfHanoi({
+  startDisksCnt,
+  startingMaxDiskCount,
+  maxDiskCount,
+}) {
   const [results, setResults] = useState([]);
   const [nextDiskCount, setNextDiskCount] = useState(startingMaxDiskCount + 1);
   const [loading, setLoading] = useState(true);
@@ -26,17 +32,19 @@ function ListItemsTowerOfHanoi({ startDisksCnt, startingMaxDiskCount, maxDiskCou
   }, [startDisksCnt, startingMaxDiskCount]);
 
   const handleAddMore = () => {
-    if (nextDiskCount <= maxDiskCount) {
+    async function go() {
       setAdding(true);
-      setTimeout(() => {
-        setNextDiskCount(prevCount => prevCount + 1);
-        setResults(prevResults => [
+      await sleep(1000);
+      if (nextDiskCount <= maxDiskCount) {
+        setNextDiskCount((prevCount) => prevCount + 1);
+        setResults((prevResults) => [
           ...prevResults,
           { disks: nextDiskCount, moves: 0, duration: "N/A" },
         ]);
-        setAdding(false);
-      }, 500);
+      }
+      setAdding(false);
     }
+    go();
   };
 
   return (
@@ -44,44 +52,38 @@ function ListItemsTowerOfHanoi({ startDisksCnt, startingMaxDiskCount, maxDiskCou
       <h1>Towers of Hanoi</h1>
       <table>
         <thead>
-        <tr>
-          <th>Number of Disks</th>
-          <th>Moves</th>
-          <th>Duration</th>
-        </tr>
+          <tr>
+            <th>Number of Disks</th>
+            <th>Moves</th>
+            <th>Duration</th>
+          </tr>
         </thead>
         <tbody>
-        {loading ? (
-          <tr>
-            <td colSpan={3}>Loading...</td>
-          </tr>
-        ) : (
-          <>
-            {results.map((result) => (
-              <tr key={result.disks}>
-                <td>{result.disks}</td>
-                <td>{result.moves.toLocaleString()}</td>
-                <td>{result.duration}</td>
-              </tr>
-            ))}
-            {adding && (
-              <tr className="fade-in">
-                <td>{nextDiskCount - 1}</td>
-                <td>0</td>
-                <td>N/A</td>
-              </tr>
-            )}
-            {!adding && nextDiskCount <= maxDiskCount && (
+          {loading ? (
+            <tr>
+              <td colSpan={3}>Loading...</td>
+            </tr>
+          ) : (
+            <>
+              {results.map((result) => (
+                <tr key={result.disks}>
+                  <td>{result.disks}</td>
+                  <td>{result.moves.toLocaleString()}</td>
+                  <td>{result.duration}</td>
+                </tr>
+              ))}
               <tr className="add-more-row">
                 <td colSpan={3}>
-                  <button onClick={handleAddMore}>
-                    Add More
+                  <button
+                    onClick={adding === false ? handleAddMore : undefined}
+                    disabled={adding === true}
+                  >
+                    {adding === false ? "Add More" : "Adding..."}
                   </button>
                 </td>
               </tr>
-            )}
-          </>
-        )}
+            </>
+          )}
         </tbody>
       </table>
     </div>
