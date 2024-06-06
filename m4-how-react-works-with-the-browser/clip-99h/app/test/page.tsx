@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { towersOfHanoi } from "../../utils/towers-of-hanoi";
 
-const numberOfDisks = 9; // Adjust this as needed
+const initialNumberOfDisks = 3; // Adjust this as needed
 
 type Move = {
   moveNumber: number;
@@ -28,6 +28,7 @@ export default function Test() {
     C: [],
   });
   const [currentMoveIndex, setCurrentMoveIndex] = useState<number>(0);
+  const [numberOfDisks, setNumberOfDisks] = useState<number>(initialNumberOfDisks);
   const animationRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -42,7 +43,7 @@ export default function Test() {
     return () => {
       if (animationRef.current) clearTimeout(animationRef.current);
     };
-  }, []);
+  }, [numberOfDisks]); // Re-run the effect whenever numberOfDisks changes
 
   const animateMoves = (moves: Move[]) => {
     if (moves.length === 0) return;
@@ -90,114 +91,113 @@ export default function Test() {
     setCurrentMoveIndex(prevIndex => move.moveNumber );
   };
 
+  const handleDiskChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setNumberOfDisks(parseInt(event.target.value));
+  };
+
   return (
     <div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          height: "100vh",
-          padding: "20px",
-        }}
-      >
-        <div
-          style={{
-            width: "30%",
-            overflowY: "scroll",
-            padding: "1rem",
-            boxSizing: "border-box",
-            background: "#f8f9fa",
-            borderRight: "2px solid #dee2e6",
-          }}
-        >
-          <h1 style={{ fontSize: "1.5rem" }}>
-            Towers of Hanoi ({numberOfDisks} Disks)
-          </h1>
-          {result && (
-            <>
-              <p>Moves: {result.moves}</p>
-              <p>Duration: {result.duration}</p>
-              {result.moveDetails && (
-                <ul style={{ listStyle: "none", padding: 0 }}>
-                  {result.moveDetails.map((move, index) => (
-                    <li
-                      key={move.moveNumber}
-                      onClick={(event) => handleMoveClick(move, event)}
-                      style={{
-                        margin: "0.5rem 0",
-                        padding: "0.5rem",
-                        backgroundColor: currentMoveIndex === index ? "#a9def9" : "#e9ecef",
-                        cursor: "pointer",
-                        borderRadius: "4px",
-                        transition: 'background-color 0.5s ease-in-out', // Smooth transition for background color
-                      }}
-                    >
-                      {move.moveDescription}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </>
-          )}
+      <h1 style={{ textAlign: "center", fontSize: "1.5rem", position: "fixed", top: "0", width: "100%", backgroundColor: "#f8f9fa", padding: "1rem 0", margin: 0, zIndex: "10" }}>
+        Towers of Hanoi
+      </h1>
+      <div style={{ display: 'flex', marginTop: '50px'}}>
+        <div style={{ width: '30%', marginRight: '20px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <select value={numberOfDisks} onChange={handleDiskChange}>
+                {[...Array(8).keys()].map((i) => (
+                  <option key={i + 2} value={i + 2}>
+                    {i + 2} Disks
+                  </option>
+                ))}
+              </select>
+            </div>
+            {result && (
+              <div style={{ marginTop: '20px' }}>
+                <p>Moves: {result.moves}</p>
+                <p>Duration: {result.duration}</p>
+                {result.moveDetails && (
+                  <ul style={{ listStyle: "none", padding: 0 }}>
+                    {result.moveDetails.map((move, index) => (
+                      <li
+                        key={move.moveNumber}
+                        onClick={(event) => handleMoveClick(move, event)}
+                        style={{
+                          margin: "0.5rem 0",
+                          padding: "0.5rem",
+                          backgroundColor: currentMoveIndex === index ? "#a9def9" : "#e9ecef",
+                          cursor: "pointer",
+                          borderRadius: "4px",
+                          transition: 'background-color 0.5s ease-in-out', // Smooth transition for background color
+                        }}
+                      >
+                        {move.moveDescription}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
+          </div>
         </div>
-        <div
-          style={{
-            width: "80%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "#f1f3f5",
-          }}
-        >
+        <div style={{ width: '70%' }}>
           <div
             style={{
               display: "flex",
-              justifyContent: "space-around",
-              width: "100%",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            {["A", "B", "C"].map((peg) => (
-              <div key={peg} style={{ textAlign: "center" }} id={`peg-${peg}`}>
-                <h2>{peg}</h2>
-                <div
-                  style={{
-                    border: "2px solid #343a40",
-                    height: "400px",
-                    width: "150px",
-                    position: "relative",
-                    backgroundColor: "#dee2e6",
-                  }}
-                >
-                  {pegs[peg]
-                    .slice()
-                    .reverse()
-                    .map((disk, index, arr) => (
-                      <div
-                        key={disk}
-                        id={`disk-${disk}`}
-                        style={{
-                          width: `${50 + ((disk - 1) / (numberOfDisks - 1)) * 40}%`,
-                          height: "30px",
-                          backgroundColor: "#6c757d",
-                          color: "white",
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          position: "absolute",
-                          bottom: `${index * 30}px`,
-                          left: "50%",
-                          transform: "translateX(-50%)",
-                          fontSize: "1.2rem",
-                          borderRadius: "4px",
-                          transition: 'all 0.5s ease-in-out', // Add transition for smooth animation
-                        }}
-                      >
-                        {disk}
-                      </div>
-                    ))}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-around",
+                width: "100%",
+              }}
+            >
+              {["A", "B", "C"].map((peg) => (
+                <div key={peg} style={{ textAlign: "center" }} id={`peg-${peg}`}>
+                  <h2>{peg}</h2>
+                  <div
+                    style={{
+                      border: "2px solid #343a40",
+                      height: "400px",
+                      width: "150px",
+                      position: "relative",
+                      backgroundColor: "#dee2e6",
+                    }}
+                  >
+                    {pegs[peg]
+                      .slice()
+                      .reverse()
+                      .map((disk, index, arr) => (
+                        <div
+                          key={disk}
+                          id={`disk-${disk}`}
+                          style={{
+                            width: `${50 + ((disk - 1) / (numberOfDisks - 1)) * 40}%`,
+                            height: "30px",
+                            backgroundColor: "#6c757d",
+                            color: "white",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            position: "absolute",
+                            bottom: `${index * 30}px`,
+                            left: "50%",
+                            transform: "translateX(-50%)",
+                            fontSize: "1.2rem",
+                            borderRadius: "4px",
+                            transition: 'all 0.5s ease-in-out', // Add transition for smooth animation
+                          }}
+                        >
+                          {disk}
+                        </div>
+                      ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -41,9 +41,9 @@ button {
   margin-bottom: 1rem;
   cursor: pointer;
   transition:
-    background-color 0.3s,
-    transform 0.1s,
-    opacity 0.5s;
+          background-color 0.3s,
+          transform 0.1s,
+          opacity 0.5s;
 }
 
 button:hover {
@@ -132,4 +132,108 @@ button.fade-out {
 /* Style for disabled button */
 button:disabled {
   background-color: gray; /* Set background color to gray when disabled */
+}
+
+/* Styling for the dropdown */
+select {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  /* appearance: none;  <-- This was hiding the arrow */
+  background-color: #fff;
+  width: 150px; /* Set width of the select */
+  font-size: 1rem; /* Set font size */
+  font-weight: normal; /* Set font weight */
+  font-family: 'Helvetica, Arial, sans-serif'; /* Set font family */
+  color: #333; /* Set color of the select text */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a box shadow */
+  position: relative; /* Add position: relative to the select */
+}
+
+/* Add a down arrow icon to the dropdown */
+select::-ms-expand {
+  display: none;
+}
+
+select::-ms-value {
+  background-color: transparent;
+}
+
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
+
+select::placeholder {
+  color: #999;
+}
+
+/* Add some hover and focus states */
+select:hover {
+  border-color: #80bdff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+select:focus {
+  outline: none;
+  border-color: #46b8da;
+  box-shadow: 0 0 0 3px rgba(62, 149, 205, 0.2);
+}
+
+/* Option styling */
+select option {
+  color: #333; /* Set color of the option text */
+  background-color: #fff; /* Set background color of the option */
+}
+
+/* Down arrow indicator */
+select::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Adjust horizontal position as needed */
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid #333; /* Adjust color as needed */
+}
+
+/* Add a light background to the arrow on hover */
+select:hover::after {
+  border-top-color: #666; /* Adjust color as needed */
+}
+
+/*  Styles for Positioning */
+.container {
+  display: flex;
+  marginTop: '0'; /*  <-- Remove the marginTop here */
+  padding: '20px';
+}
+
+.column-left {
+  width: 30%;
+  marginRight: '20px';
+  display: 'flex';
+  flex-direction: 'column';
+}
+
+.column-right {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #f8f9fa;
+  padding: 1rem 0;
+  margin: 0;
+  z-index: 10;
+  text-align: center;
+  font-size: 1.5rem;
 }
