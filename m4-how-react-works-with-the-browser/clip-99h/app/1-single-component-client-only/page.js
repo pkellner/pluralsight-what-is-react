@@ -1,16 +1,43 @@
-import { towersOfHanoi, towersOfHanoiPromise  } from "../../utils/tower-of-hanoi";
+"use client";
+import React, { useState, useEffect } from "react";
+import {
+  towersOfHanoi,
+  towersOfHanoiPromise,
+} from "../../utils/tower-of-hanoi";
 
-function ListItemsTowerOfHanoi({ startDisksCnt, endDisksCnt }) {
-  // iterate in increments of one between startDisksCnt and endDisksCnt and for each number call towersOfHanoi.
-  // return the result of towersOfHanoi in a list that includes the number of disks and the duration
-  const numberOfDisks = [];
-  for (let i = startDisksCnt; i <= endDisksCnt; i++) {
-    numberOfDisks.push(i);
-  }
-  const results = numberOfDisks.map((i) => {
-    const result = towersOfHanoi(i, false);
-    return { disks: i, moves: result.moves, duration: result.duration };
-  });
+function ListItemsTowerOfHanoi({ startDisksCnt, startingMaxDiskCount, maxDiskCount }) {
+  const [results, setResults] = useState([]);
+  const [nextDiskCount, setNextDiskCount] = useState(startingMaxDiskCount + 1);
+  const [loading, setLoading] = useState(true);
+  const [adding, setAdding] = useState(false);
+
+  useEffect(() => {
+    const initialResults = [];
+    for (let i = startDisksCnt; i <= startingMaxDiskCount; i++) {
+      const result = towersOfHanoi(i, false);
+      initialResults.push({
+        disks: i,
+        moves: result.moves,
+        duration: result.duration,
+      });
+    }
+    setResults(initialResults);
+    setLoading(false);
+  }, [startDisksCnt, startingMaxDiskCount]);
+
+  const handleAddMore = () => {
+    if (nextDiskCount <= maxDiskCount) {
+      setAdding(true);
+      setTimeout(() => {
+        setResults(prevResults => [
+          ...prevResults,
+          { disks: nextDiskCount, moves: 0, duration: "N/A" },
+        ]);
+        setNextDiskCount(nextDiskCount + 1);
+        setAdding(false);
+      }, 500);
+    }
+  };
 
   return (
     <div>
@@ -24,13 +51,46 @@ function ListItemsTowerOfHanoi({ startDisksCnt, endDisksCnt }) {
         </tr>
         </thead>
         <tbody>
-        {results.map((result) => (
-          <tr key={result.disks}>
-            <td>{result.disks}</td>
-            <td>{result.moves.toLocaleString()}</td>
-            <td>{result.duration}</td>
+        {loading === false ? (
+          results.map((result) => (
+            <tr key={result.disks}>
+              <td>{result.disks}</td>
+              <td>{result.moves.toLocaleString()}</td>
+              <td>{result.duration}</td>
+            </tr>
+          ))
+        ) : (
+          <tr>
+            <td colSpan={3}>Loading...</td>
           </tr>
-        ))}
+        )}
+        {nextDiskCount <= maxDiskCount && loading === false && !adding && (
+          <tr className="add-more-row">
+            <td colSpan={3}>
+              <button onClick={handleAddMore}>
+                Add More
+              </button>
+            </td>
+          </tr>
+        )}
+        {adding && (
+          <>
+            <tr className="fade-in">
+              <td>{nextDiskCount - 1}</td>
+              <td>0</td>
+              <td>N/A</td>
+            </tr>
+            {nextDiskCount <= maxDiskCount && adding === false && (
+              <tr className="add-more-row fade-in">
+                <td colSpan={3}>
+                  <button onClick={handleAddMore} disabled={adding}>
+                    Add More
+                  </button>
+                </td>
+              </tr>
+            )}
+          </>
+        )}
         </tbody>
       </table>
     </div>
@@ -38,5 +98,11 @@ function ListItemsTowerOfHanoi({ startDisksCnt, endDisksCnt }) {
 }
 
 export default function Page() {
-  return <ListItemsTowerOfHanoi startDisksCnt={12} endDisksCnt={21} />;
+  return (
+    <ListItemsTowerOfHanoi
+      startDisksCnt={1}
+      startingMaxDiskCount={3}
+      maxDiskCount={10}
+    />
+  );
 }
