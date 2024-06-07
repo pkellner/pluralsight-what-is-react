@@ -1,9 +1,9 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect, startTransition} from "react";
 import {
   towersOfHanoi,
   towersOfHanoiPromise,
-  towersOfHanoiByNumberDisks,
+  towersOfHanoiByNumberDisksPromise,
 } from "../../utils/towers-of-hanoi";
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -33,25 +33,18 @@ function ListItemsTowerOfHanoi({
   }, [startDisksCnt, startingMaxDiskCount]);
 
   const handleAddMore = () => {
-    async function go() {
-      setAdding(true);
-      // await sleep(1000);
-      const newRow = await towersOfHanoiByNumberDisks(nextDiskCount, false);
+    setAdding(true);
+    setTimeout(async () => {
+      const newRow = await towersOfHanoiByNumberDisksPromise(nextDiskCount, false);
       if (nextDiskCount <= maxDiskCount) {
         setNextDiskCount((prevCount) => prevCount + 1);
         setResults((prevResults) => [
           ...prevResults,
-          {
-            disks: nextDiskCount,
-            moves: newRow.moves,
-            duration: newRow.duration,
-          },
-          // { disks: nextDiskCount, moves: 0, duration: "N/A" },
+          { disks: nextDiskCount, moves: newRow.moves, duration: newRow.duration },
         ]);
       }
       setAdding(false);
-    }
-    go();
+    }, 1);
   };
 
   return (

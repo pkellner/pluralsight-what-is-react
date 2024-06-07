@@ -87,7 +87,7 @@ export function towersOfHanoiPromise(n: number, returnMoves: boolean = false): P
 }
 
 
-export function towersOfHanoiByNumberDisks(n: number): Promise<{ moves: number, duration: string }> {
+export function towersOfHanoiByNumberDisksPromise(n: number): Promise<{ moves: number, duration: string }> {
   return new Promise((resolve, reject) => {
     towersOfHanoiPromise(n)
       .then(result => {
