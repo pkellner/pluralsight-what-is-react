@@ -224,15 +224,3 @@ select:hover::after {
   justify-content: center;
   align-items: center;
 }
-
-/*h1 {*/
-/*  position: fixed;*/
-/*  top: 0;*/
-/*  width: 100%;*/
-/*  background-color: #f8f9fa;*/
-/*  padding: 1rem 0;*/
-/*  margin: 0;*/
-/*  z-index: 10;*/
-/*  text-align: center;*/
-/*  font-size: 1.5rem;*/
-/*}*/

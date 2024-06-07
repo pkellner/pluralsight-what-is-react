@@ -44,7 +44,7 @@ function ListItemsTowerOfHanoi({
         ]);
       }
       setAdding(false);
-    }, 1);
+    }, 100);
   };
 
   return (
