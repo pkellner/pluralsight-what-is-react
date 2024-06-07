@@ -105,19 +105,18 @@ export default function Test() {
     setNumberOfDisks(parseInt(event.target.value));
   };
 
-  const  maxMovesToShow= 2;
+  const  maxMovesToShow= 9;
   const movesToShow = result?.moveDetails?.length < maxMovesToShow ? result?.moveDetails?.length : maxMovesToShow;
   const notShownMoves = result?.moveDetails?.length - movesToShow - 1;
 
 
   return (
     <div>
-      <h1>Towers of Hanoi</h1>
-      <div style={{ display: "flex", marginTop: "50px" }}>
-        <div style={{ width: "30%", marginRight: "20px" }}>
-          <div style={{ display: "flex", flexDirection: "column" }}>
+      <div style={{display: "flex"}}>
+        <div style={{width: "30%", marginRight: "20px"}}>
+          <div style={{display: "flex", flexDirection: "column"}}>
             {result && (
-              <div style={{ marginTop: "20px" }}>
+              <div style={{marginTop: "10px"}}>
                 <div
                   style={{
                     display: "flex",
@@ -139,8 +138,8 @@ export default function Test() {
                   <b>{result.duration}</b> seconds.
                 </p>
                 {result.moveDetails && (
-                  <ul style={{ listStyle: "none", padding: 0 }}>
-                    {result.moveDetails.slice(0,maxMovesToShow).map((move, index) => (
+                  <ul style={{listStyle: "none", padding: 0}}>
+                    {result.moveDetails.slice(0, maxMovesToShow).map((move, index) => (
                       <li
                         key={move.moveNumber}
                         onClick={(event) => handleMoveClick(move, event)}
@@ -159,12 +158,13 @@ export default function Test() {
                     ))}
                   </ul>
                 )}
-                {notShownMoves > 0 && (<div>...and {notShownMoves} more</div>)}
+                {notShownMoves > 0 && (<div><i>...and {notShownMoves} more</i></div>)}
               </div>
             )}
           </div>
         </div>
-        <div style={{ width: "70%" }}>
+
+        <div style={{width: "70%"}}>
           <div
             style={{
               display: "flex",
@@ -172,6 +172,7 @@ export default function Test() {
               alignItems: "center",
             }}
           >
+
             <div
               style={{
                 display: "flex",
@@ -179,10 +180,11 @@ export default function Test() {
                 width: "100%",
               }}
             >
+
               {["A", "B", "C"].map((peg) => (
                 <div
                   key={peg}
-                  style={{ textAlign: "center" }}
+                  style={{textAlign: "center", fontSize: "1.5rem"}}
                   id={`peg-${peg}`}
                 >
                   <h2>{peg}</h2>
@@ -199,7 +201,7 @@ export default function Test() {
                     {pegs[peg]
                       .slice()
                       .reverse()
-                      .map((disk, index, arr) => (
+                      .map((disk, index) => (
                         <div
                           key={disk}
                           id={`disk-${disk}`}
@@ -233,6 +235,7 @@ export default function Test() {
         </div>
       </div>
       {/*<pre>{JSON.stringify(pegs, null, 2)}</pre>*/}
+      <h1>Towers of Hanoi</h1>
     </div>
   );
 }
