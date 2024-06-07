@@ -60,7 +60,7 @@ function ListItemsTowerOfHanoi({
       <table>
         <thead>
           <tr>
-            <th>Number of Disks</th>
+            <th>Disks</th>
             <th>Moves</th>
             <th>Duration</th>
           </tr>

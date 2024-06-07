@@ -10,10 +10,10 @@ body {
 }
 
 h1 {
-  text-align: center;
-  color: #007bff;
+  text-align: left;
+  color: #00A3FF;
   margin-bottom: 1.5rem;
-  font-size: 2.5rem;
+  font-size: 2.0rem;
   font-weight: bold;
 }
 
@@ -29,11 +29,11 @@ li {
   margin-bottom: 0.5rem;
   padding: 0.5rem 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 200px;
+  //width: 200px;
 }
 
 button {
-  background-color: #007bff;
+  background-color: #00A3FF;
   border: none;
   border-radius: 0.25rem;
   color: white;
@@ -47,19 +47,19 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #00A3FF;
   transform: scale(1.05);
 }
 
 button:active {
-  background-color: #003d82;
+  background-color: #00A3FF;
   transform: scale(0.95);
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Styling for the table */
 table {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   border-collapse: collapse;
   background-color: #ffffff;
@@ -70,14 +70,14 @@ table {
 }
 
 table thead {
-  background-color: #007bff;
+  background-color: #00A3FF;
   color: white;
 }
 
 table th,
 table td {
   padding: 0.75rem;
-  text-align: center;
+  text-align: left;
   border-bottom: 1px solid #dee2e6;
 }
 
@@ -139,7 +139,6 @@ select {
   padding: 0.5rem 1rem;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
-  /* appearance: none;  <-- This was hiding the arrow */
   background-color: #fff;
   width: 150px; /* Set width of the select */
   font-size: 1rem; /* Set font size */
@@ -170,13 +169,13 @@ select::placeholder {
 
 /* Add some hover and focus states */
 select:hover {
-  border-color: #80bdff;
+  border-color: #00A3FF;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 select:focus {
   outline: none;
-  border-color: #46b8da;
+  border-color: #00A3FF;
   box-shadow: 0 0 0 3px rgba(62, 149, 205, 0.2);
 }
 
@@ -226,14 +225,14 @@ select:hover::after {
   align-items: center;
 }
 
-h1 {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #f8f9fa;
-  padding: 1rem 0;
-  margin: 0;
-  z-index: 10;
-  text-align: center;
-  font-size: 1.5rem;
-}
+/*h1 {*/
+/*  position: fixed;*/
+/*  top: 0;*/
+/*  width: 100%;*/
+/*  background-color: #f8f9fa;*/
+/*  padding: 1rem 0;*/
+/*  margin: 0;*/
+/*  z-index: 10;*/
+/*  text-align: center;*/
+/*  font-size: 1.5rem;*/
+/*}*/

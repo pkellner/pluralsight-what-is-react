@@ -28,7 +28,8 @@ export default function Test() {
     C: [],
   });
   const [currentMoveIndex, setCurrentMoveIndex] = useState<number>(0);
-  const [numberOfDisks, setNumberOfDisks] = useState<number>(initialNumberOfDisks);
+  const [numberOfDisks, setNumberOfDisks] =
+    useState<number>(initialNumberOfDisks);
   const animationRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -58,8 +59,17 @@ export default function Test() {
         const targetRect = targetPeg.getBoundingClientRect();
         const diskRect = diskElement.getBoundingClientRect();
 
-        const moveX = (targetRect.left - diskRect.left - (targetRect.width - diskRect.width) / 2) + 43;
-        const moveY = (targetRect.top + targetPeg.clientHeight - diskRect.height * (pegs[move.to].length + 1) - diskRect.top) - 300;
+        const moveX =
+          targetRect.left -
+          diskRect.left -
+          (targetRect.width - diskRect.width) / 2 +
+          43;
+        const moveY =
+          targetRect.top +
+          targetPeg.clientHeight -
+          diskRect.height * (pegs[move.to].length + 1) -
+          diskRect.top -
+          300;
 
         diskElement.style.transition = "transform 0.7s ease-in-out";
         diskElement.style.zIndex = "10"; // Ensure moving disk is above others
@@ -87,48 +97,61 @@ export default function Test() {
 
   const handleMoveClick = (move: Move, event: React.MouseEvent) => {
     event.stopPropagation();
-    setPegs(prevPegs => move.pegs);
-    setCurrentMoveIndex(prevIndex => move.moveNumber );
+    setPegs((prevPegs) => move.pegs);
+    setCurrentMoveIndex((prevIndex) => move.moveNumber);
   };
 
   const handleDiskChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setNumberOfDisks(parseInt(event.target.value));
   };
 
+  const  maxMovesToShow= 2;
+  const movesToShow = result?.moveDetails?.length < maxMovesToShow ? result?.moveDetails?.length : maxMovesToShow;
+  const notShownMoves = result?.moveDetails?.length - movesToShow - 1;
+
+
   return (
     <div>
-      <h1 style={{ textAlign: "center", fontSize: "1.5rem", position: "fixed", top: "0", width: "100%", backgroundColor: "#f8f9fa", padding: "1rem 0", margin: 0, zIndex: "10" }}>
-        Towers of Hanoi
-      </h1>
-      <div style={{ display: 'flex', marginTop: '50px'}}>
-        <div style={{ width: '30%', marginRight: '20px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <select value={numberOfDisks} onChange={handleDiskChange}>
-                {[...Array(8).keys()].map((i) => (
-                  <option key={i + 2} value={i + 2}>
-                    {i + 2} Disks
-                  </option>
-                ))}
-              </select>
-            </div>
+      <h1>Towers of Hanoi</h1>
+      <div style={{ display: "flex", marginTop: "50px" }}>
+        <div style={{ width: "30%", marginRight: "20px" }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
             {result && (
-              <div style={{ marginTop: '20px' }}>
-                <p>Moves: {result.moves}</p>
-                <p>Duration: {result.duration}</p>
+              <div style={{ marginTop: "20px" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "left",
+                    alignItems: "left",
+                  }}
+                >
+                  <select value={numberOfDisks} onChange={handleDiskChange}>
+                    {[...Array(8).keys()].map((i) => (
+                      <option key={i + 2} value={i + 2}>
+                        {i + 2} Disks
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <p>
+                  Solved in <b>{result?.moves}</b> moves. Total disks is{" "}
+                  <b>{numberOfDisks}</b> and move calc took{" "}
+                  <b>{result.duration}</b> seconds.
+                </p>
                 {result.moveDetails && (
                   <ul style={{ listStyle: "none", padding: 0 }}>
-                    {result.moveDetails.map((move, index) => (
+                    {result.moveDetails.slice(0,maxMovesToShow).map((move, index) => (
                       <li
                         key={move.moveNumber}
                         onClick={(event) => handleMoveClick(move, event)}
                         style={{
                           margin: "0.5rem 0",
                           padding: "0.5rem",
-                          backgroundColor: currentMoveIndex === index ? "#a9def9" : "#e9ecef",
+                          backgroundColor:
+                            currentMoveIndex === index ? "#a9def9" : "#e9ecef",
                           cursor: "pointer",
                           borderRadius: "4px",
-                          transition: 'background-color 0.5s ease-in-out', // Smooth transition for background color
+                          transition: "background-color 0.5s ease-in-out",
                         }}
                       >
                         {move.moveDescription}
@@ -136,11 +159,12 @@ export default function Test() {
                     ))}
                   </ul>
                 )}
+                {notShownMoves > 0 && (<div>...and {notShownMoves} more</div>)}
               </div>
             )}
           </div>
         </div>
-        <div style={{ width: '70%' }}>
+        <div style={{ width: "70%" }}>
           <div
             style={{
               display: "flex",
@@ -156,15 +180,20 @@ export default function Test() {
               }}
             >
               {["A", "B", "C"].map((peg) => (
-                <div key={peg} style={{ textAlign: "center" }} id={`peg-${peg}`}>
+                <div
+                  key={peg}
+                  style={{ textAlign: "center" }}
+                  id={`peg-${peg}`}
+                >
                   <h2>{peg}</h2>
                   <div
                     style={{
-                      border: "2px solid #343a40",
+                      border: "3px solid #00A3FF",
+                      borderRadius: "7px",
                       height: "400px",
                       width: "150px",
                       position: "relative",
-                      backgroundColor: "#dee2e6",
+                      backgroundColor: "#EBEFF5",
                     }}
                   >
                     {pegs[peg]
@@ -175,9 +204,11 @@ export default function Test() {
                           key={disk}
                           id={`disk-${disk}`}
                           style={{
-                            width: `${50 + ((disk - 1) / (numberOfDisks - 1)) * 40}%`,
+                            width: `${
+                              50 + ((disk - 1) / (numberOfDisks - 1)) * 40
+                            }%`,
                             height: "30px",
-                            backgroundColor: "#6c757d",
+                            backgroundColor: "#1B1834",
                             color: "white",
                             display: "flex",
                             justifyContent: "center",
@@ -188,7 +219,7 @@ export default function Test() {
                             transform: "translateX(-50%)",
                             fontSize: "1.2rem",
                             borderRadius: "4px",
-                            transition: 'all 0.5s ease-in-out', // Add transition for smooth animation
+                            transition: "all 0.5s ease-in-out", // Add transition for smooth animation
                           }}
                         >
                           {disk}
@@ -201,7 +232,7 @@ export default function Test() {
           </div>
         </div>
       </div>
-      <pre>{JSON.stringify(pegs, null, 2)}</pre>
+      {/*<pre>{JSON.stringify(pegs, null, 2)}</pre>*/}
     </div>
   );
 }
