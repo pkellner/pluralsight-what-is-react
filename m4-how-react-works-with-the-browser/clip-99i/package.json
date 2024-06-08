@@ -1,0 +1,23 @@
+{
+  "name": "clip-99b",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "next": "^15.0.0-rc.0",
+    "react": "^19.0.0-rc.0",
+    "react-dom": "^19.0.0-rc.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.2",
+    "@types/react": "18.3.3",
+    "eslint": "^8",
+    "eslint-config-next": "^15.0.0-rc.0"
+  }
+}
