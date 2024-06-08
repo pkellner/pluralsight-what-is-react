@@ -11,8 +11,10 @@
   "dependencies": {
     "bootstrap": "^5.3.3",
     "next": "^15.0.0-rc.0",
+    "openmeteo": "^1.1.4",
     "react": "^19.0.0-rc.0",
-    "react-dom": "^19.0.0-rc.0"
+    "react-dom": "^19.0.0-rc.0",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
     "@types/node": "20.14.2",

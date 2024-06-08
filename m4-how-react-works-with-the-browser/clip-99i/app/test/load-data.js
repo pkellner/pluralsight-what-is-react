@@ -1,15 +1,14 @@
 "use client";
 import React, { useState } from "react";
-import TableData from "./table-data";
 
-export default function LoadData() {
+export default function LoadData({ children }) {
   const [show, setShow] = useState(false);
   return (
-    <div>
+    <>
       <button onClick={() => setShow(!show)}>
         {show ? "Hide Data" : "Load Data"}
       </button>
-      {show && <TableData />}
-    </div>
+      {show && <>{children}</>}
+    </>
   );
 }

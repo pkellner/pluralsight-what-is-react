@@ -1,3 +1,4 @@
+import "server-only";
 import React from "react";
 
 export default function TableRows({ results }) {
