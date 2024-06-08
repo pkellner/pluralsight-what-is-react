@@ -40,10 +40,10 @@ button {
   padding: 0.5rem 1rem;
   margin-bottom: 1rem;
   cursor: pointer;
-  transition:
-          background-color 0.3s,
-          transform 0.1s,
-          opacity 0.5s;
+  /*transition:*/
+  /*        background-color 0.3s,*/
+  /*        transform 0.1s,*/
+  /*        opacity 0.5s;*/
 }
 
 button:hover {

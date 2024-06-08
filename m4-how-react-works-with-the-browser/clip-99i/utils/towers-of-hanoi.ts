@@ -3,6 +3,21 @@ export async function towersOfHanoiPerformanceArrayResultsPromise(
   total: number,
 ): Promise<{ disks: number; moves: number; duration: string }[]> {
   return new Promise((resolve) => {
+    // const sleep = (ms: number) =>
+    //   new Promise((resolve) => setTimeout(resolve, ms));
+    // sleep(0).then(() => {
+    //   const results = [];
+    //   for (let i = start; i <= start + total; i++) {
+    //     const x = towersOfHanoi(i);
+    //     results.push({
+    //       disks: i,
+    //       moves: x.moves,
+    //       duration: x.duration,
+    //     });
+    //   }
+    //   resolve(results);
+    // });
+
     const results = [];
     for (let i = start; i <= start + total; i++) {
       const x = towersOfHanoi(i);

@@ -1,14 +1,7 @@
-import { towersOfHanoiPerformanceArrayResultsPromise } from "../../utils/towers-of-hanoi";
-import TableData from "./table-data";
 import { Suspense } from "react";
+import LoadData from "./load-data";
 
-export default async function Page() {
-  const results = await towersOfHanoiPerformanceArrayResultsPromise(15, 5);
-
-  return <Inner results={results} />;
-}
-
-async function Inner({ results }) {
+export default function Page() {
   return (
     <div>
       <header className="header">
@@ -20,7 +13,7 @@ async function Inner({ results }) {
         />
       </header>
       <Suspense fallback={<p>Loading...</p>}>
-        <TableData results={results} />{" "}
+        <LoadData />
       </Suspense>
     </div>
   );

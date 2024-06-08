@@ -1,6 +1,11 @@
-import React from "react";
+import React, {use} from "react";
+import {towersOfHanoiPerformanceArrayResultsPromise} from "../../utils/towers-of-hanoi";
+import TableRows from "./table-rows";
 
-export default function TableData({ results }) {
+export default function TableData() {
+
+  const results = use(towersOfHanoiPerformanceArrayResultsPromise(15, 6));
+
   return (
     <table>
       <thead>
@@ -11,13 +16,7 @@ export default function TableData({ results }) {
         </tr>
       </thead>
       <tbody>
-        {results.map((result) => (
-          <tr key={result.disks}>
-            <td>{result.disks}</td>
-            <td>{result.moves.toLocaleString()}</td>
-            <td>{result.duration}</td>
-          </tr>
-        ))}
+        <TableRows results={results} />
       </tbody>
     </table>
   );
