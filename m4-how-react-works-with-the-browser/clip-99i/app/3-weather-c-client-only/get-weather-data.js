@@ -1,12 +1,15 @@
 // Note: the way you would do data fetching depends on
 // the framework that you use together with Suspense.
 // Normally, the caching logic would be inside a framework.
+//   reference: https://react.dev/reference/react/Suspense#suspense
+
+import locations from "./city-list.json";
 
 let cache = new Map();
 
-export function getWeatherDataCachePromise(url,locations) {
+export function getWeatherDataCachePromise(url) {
   if (!cache.has(url)) {
-    cache.set(url, getWeatherData(locations));
+    cache.set(url, getWeatherData(url));
   }
   return cache.get(url);
 }
@@ -23,15 +26,16 @@ const fetchWeatherApi = async (url, params) => {
   }
 };
 
-export async function getWeatherData(locations) {
-  const url = "https://api.open-meteo.com/v1/forecast";
+export default async function getWeatherData(url) {
   const params = {
     latitude: locations.map((loc) => loc.latitude),
     longitude: locations.map((loc) => loc.longitude),
-    current_weather: true, // This ensures we get the current weather
+    current_weather: true,
   };
 
   try {
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    await sleep(1000); // Simulate a slow network
     const responses = await fetchWeatherApi(url, params);
     return responses.map((response, index) => {
       const celsiusToFahrenheit = (celsius) => (celsius * 9) / 5 + 32;
