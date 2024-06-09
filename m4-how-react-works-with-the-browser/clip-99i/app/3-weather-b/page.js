@@ -1,44 +1,25 @@
-import getWeatherData from "./get-weather-data";
-import locations from "./locations.json";
+import React, { Suspense } from "react";
+import TableData from "./table-data";
+import LoadData from "./load-data";
 
-export default async function WeatherA() {
-  const data = await getWeatherData(locations);
-
+export default async function MainApp() {
   return (
-    <div className="container">
-      <table>
-        <thead>
-          <tr>
-            <th>City</th>
-            <th>State</th>
-            <th>Latitude</th>
-            <th>Longitude</th>
-            <th>Population</th>
-            <th>Temperature</th>
-            <th>Weather Code</th>
-            <th>Wind Speed</th>
-            <th>Wind Direction</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((item, index) => (
-            <tr
-              key={item.location.city}
-              className={index % 2 === 0 ? "even-row" : "odd-row"}
-            >
-              <td>{item.location.city}</td>
-              <td>{item.location.state}</td>
-              <td>{item.location.latitude}</td>
-              <td>{item.location.longitude}</td>
-              <td>{item.location.population}</td>
-              <td>{item.temperature}</td>
-              <td>{item.weatherCode}</td>
-              <td>{item.windSpeed}</td>
-              <td>{item.windDirection}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div>
+      <header className="header">
+        <h1>Towers of Hanoi</h1>
+        <img
+          src="/blocks-header-100b.png"
+          alt="Kid playing with blocks"
+          className="image"
+        />
+      </header>
+      <div>
+        <Suspense fallback={<>Loading.</>}>
+          <LoadData>
+            <TableData />
+          </LoadData>
+        </Suspense>
+      </div>
     </div>
   );
 }
