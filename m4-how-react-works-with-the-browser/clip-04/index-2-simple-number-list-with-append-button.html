@@ -12,13 +12,13 @@
       const generateButtonHTML = () =>
         `<button id="addItemButton">Add Item</button>`;
       rootElement.innerHTML = `${generateListHTML(
-        numbers
+        numbers,
       )}${generateButtonHTML()}`;
       const addItemButton = document.getElementById("addItemButton");
       const incrementValue = 2;
       const addItem = () => {
         const newNumber = numbers[numbers.length - 1] + incrementValue;
-        numbers.push(newNumber); // Add new number to array 
+        numbers.push(newNumber); // Add new number to array
         rootElement
           .querySelector("ul")
           .insertAdjacentHTML("beforeend", `<li>${newNumber}</li>`);

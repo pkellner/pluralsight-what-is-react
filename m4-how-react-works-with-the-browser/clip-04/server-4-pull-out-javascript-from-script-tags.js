@@ -1,4 +1,4 @@
-const http = require('http');
+const http = require("http");
 
 const port = 3000;
 
@@ -15,7 +15,7 @@ const generateButtonHTML = () => `
 `;
 
 const requestHandler = (req, res) => {
-  res.setHeader('Content-Type', 'text/html');
+  res.setHeader("Content-Type", "text/html");
   res.writeHead(200);
   res.end(`
     <html lang="en">
@@ -24,10 +24,10 @@ const requestHandler = (req, res) => {
         <script>
           const numbers = ${JSON.stringify(numbers)};
           const rootElement = document.getElementById("root");
-          
+
           const generateListHTML = (numbers) => \`
             <ul>
-              \${numbers.map((number) => \`<li>\${number}</li>\`).join("")}
+              \${numbers.map((number) => \`<li>\${number}</li>\`).join('')}
             </ul>
           \`;
 
@@ -36,12 +36,12 @@ const requestHandler = (req, res) => {
           \`;
 
           rootElement.innerHTML = \`\${generateListHTML(numbers)}\${generateButtonHTML()}\`;
-          
+
           const addItemButton = document.getElementById("addItemButton");
           const incrementValue = 2;
           const addItem = () => {
             const newNumber = numbers[numbers.length - 1] + incrementValue;
-            numbers.push(newNumber); // Add new number to array 
+            numbers.push(newNumber);
             rootElement
               .querySelector("ul")
               .insertAdjacentHTML("beforeend", \`<li>\${newNumber}</li>\`);
@@ -57,7 +57,7 @@ const server = http.createServer(requestHandler);
 
 server.listen(port, (err) => {
   if (err) {
-    return console.log('Something went wrong:', err);
+    return console.log("Something went wrong:", err);
   }
   console.log(`Server is listening on http://localhost:${port}`);
 });
