@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple React App No JSX</title>
+</head>
+<body>
+<div id="root"></div>
+<script>
+  // Global variable to store the numbers array
+  let numbers = [1, 2, 3, 4];
+
+  const generateListHTML = (numbers) => {
+    return `
+        <ul>
+          ${numbers.map(number => `<li>${number}</li>`).join('')}
+        </ul>
+      `;
+  };
+
+  const generateButtonHTML = () => {
+    return `<button id="addItemButton">Add Item</button>`;
+  };
+
+  const root = document.getElementById('root');
+  const initialListHTML = generateListHTML(numbers);
+  const buttonHTML = generateButtonHTML();
+  root.innerHTML = initialListHTML + buttonHTML;
+
+  const addItemButton = document.getElementById('addItemButton');
+
+  addItemButton.addEventListener('click', () => {
+    const lastNumber = numbers[numbers.length - 1];
+    const newNumber = lastNumber + 3;
+    numbers.push(newNumber);
+    const newListItem = document.createElement('li');
+    newListItem.textContent = newNumber;
+    root.querySelector('ul').appendChild(newListItem);
+  });
+</script>
+</body>
+</html>
