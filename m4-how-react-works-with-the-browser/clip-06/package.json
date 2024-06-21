@@ -12,6 +12,7 @@
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18",
+    "server-only": "^0.0.1",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
