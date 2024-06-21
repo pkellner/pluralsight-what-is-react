@@ -11,7 +11,7 @@ const requestHandler = (req, res) => {
         <div id="root"></div>
         <script>
           const rootElement = document.getElementById("root");
-          const numbers = [1, 2, 3, 4, 5];
+          const numbers = [1, 2, 3, 4];
           const generateListHTML = (numbers) => 
             \`<ul>\${numbers.map(number => \`<li>\${number}</li>\`).join('')}</ul>\`;
           const generateButtonHTML = () => '<button id="addItemButton">Add Item</button>';

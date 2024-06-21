@@ -3,7 +3,7 @@ const http = require("http");
 const port = 3000;
 
 // Global variable to store the numbers array
-let numbers = [1, 2, 3, 4, 5];
+let numbers = [1, 2, 3, 4];
 
 const generateListHTML = (numbers) => {
   let listHTML = "<ul>";
