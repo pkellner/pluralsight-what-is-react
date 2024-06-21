@@ -1,3 +1,5 @@
+import ProductTable from "./products-table";
+
 const sqlite3 = require("sqlite3").verbose();
 const db = new sqlite3.Database("bikestore.db");
 
@@ -21,26 +23,5 @@ export default async function Products() {
     "SELECT id, name, price, category FROM products",
   );
 
-  return (
-    <table className="table table-bordered table-hover">
-      <thead className="table-dark">
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Category</th>
-        </tr>
-      </thead>
-      <tbody>
-        {products.map((product) => (
-          <tr key={product.id}>
-            <td>{product.id}</td>
-            <td>{product.name}</td>
-            <td>${product.price.toFixed(2)}</td>
-            <td>{product.category}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
+  return <ProductTable products={products} />;
 }
