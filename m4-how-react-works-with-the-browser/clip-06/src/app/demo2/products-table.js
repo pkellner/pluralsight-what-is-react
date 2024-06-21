@@ -3,42 +3,50 @@
 import { useState } from "react";
 
 export default function ProductTable({ products }) {
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  const filteredProducts = selectedCategory && selectedCategory !== "Select Category"
+    ? products.filter((product) => product.category === selectedCategory)
+    : [];
+
   return (
     <div>
-      <ProductDropdown />
+      <ProductDropdown setSelectedCategory={setSelectedCategory} />
       <table className="table table-bordered table-hover">
         <thead className="table-dark">
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Category</th>
-          </tr>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Category</th>
+        </tr>
         </thead>
         <tbody>
-          {products.map((product) => (
-            <tr key={product.id}>
-              <td>{product.id}</td>
-              <td>{product.name}</td>
-              <td>${product.price.toFixed(2)}</td>
-              <td>{product.category}</td>
-            </tr>
-          ))}
+        {filteredProducts.map((product) => (
+          <tr key={product.id}>
+            <td>{product.id}</td>
+            <td>{product.name}</td>
+            <td>${product.price.toFixed(2)}</td>
+            <td>{product.category}</td>
+          </tr>
+        ))}
         </tbody>
       </table>
     </div>
   );
 }
 
-function ProductDropdown() {
+function ProductDropdown({ setSelectedCategory }) {
   const [selectedItem, setSelectedItem] = useState("Select Category");
   const [isOpen, setIsOpen] = useState(false);
   const items = ["Bikes", "Accessories", "Apparel", "Components"];
 
   const handleSelect = (item) => {
     setSelectedItem(item);
+    setSelectedCategory(item);
     setIsOpen(false);
   };
+
   return (
     <div className="dropdown mt-2 mb-2">
       <button
@@ -47,7 +55,7 @@ function ProductDropdown() {
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
       >
-        {selectedItem || "Select a product"}
+        {selectedItem || "Select a category"}
       </button>
       {isOpen && (
         <ul className="dropdown-menu show">
