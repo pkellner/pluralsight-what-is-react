@@ -1,39 +1,16 @@
 'use client';
-import React, { useState, createContext, useContext } from 'react';
 
-const SelectedItemContext = createContext();
+import { useState } from 'react';
 
-export function SelectedItemProvider({ children }) {
-  const [selectedItem, setSelectedItem] = useState('Select Product');
-
-  return (
-    <SelectedItemContext.Provider value={{ selectedItem, setSelectedItem }}>
-      {children}
-    </SelectedItemContext.Provider>
-  );
-}
-
-export function useSelectedItem() {
-  const context = useContext(SelectedItemContext);
-  if (context === undefined) {
-    throw new Error('useSelectedItem must be used within a SelectedItemProvider');
-  }
-  return context;
-}
-
-export default function ProductDropdown() {
-  const { selectedItem, setSelectedItem } = useSelectedItem();
+export function ProductDropdown({ setSelectedCategory }) {
+  const [selectedItem, setSelectedItem] = useState("Select Category");
   const [isOpen, setIsOpen] = useState(false);
-  const items = ['Bikes', 'Accessories', 'Apparel', 'Components'];
+  const items = ["Bikes", "Accessories", "Apparel", "Components"];
 
-  const handleSelect = (event, item) => {
-    event.preventDefault();
+  const handleSelect = (item) => {
     setSelectedItem(item);
+    setSelectedCategory(item);
     setIsOpen(false);
-  };
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
   };
 
   return (
@@ -41,24 +18,25 @@ export default function ProductDropdown() {
       <button
         className="btn btn-secondary dropdown-toggle"
         type="button"
-        onClick={toggleDropdown}
+        onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
       >
-        {selectedItem}
+        {selectedItem || "Select a category"}
       </button>
-      <ul className={`dropdown-menu ${isOpen ? 'show' : ''}`} aria-labelledby="dropdownMenuButton">
-        {items.map((item) => (
-          <li key={item}>
-            <a
-              className="dropdown-item"
-              href="#"
-              onClick={(e) => handleSelect(e, item)}
-            >
-              {item}
-            </a>
-          </li>
-        ))}
-      </ul>
+      {isOpen && (
+        <ul className="dropdown-menu show">
+          {items.map((item) => (
+            <li key={item}>
+              <button
+                className="dropdown-item"
+                onClick={() => handleSelect(item)}
+              >
+                {item}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
