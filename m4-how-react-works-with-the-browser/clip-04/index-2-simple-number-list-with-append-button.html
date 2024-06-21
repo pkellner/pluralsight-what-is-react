@@ -3,7 +3,7 @@
     <div id="root"></div>
     <script>
       const rootElement = document.getElementById("root");
-      const numbers = [1, 2, 3, 4, 5];
+      const numbers = [1, 2, 3, 4];
       const generateListHTML = (numbers) => `
         <ul>
           ${numbers.map((number) => `<li>${number}</li>`).join("")}
@@ -15,7 +15,7 @@
         numbers,
       )}${generateButtonHTML()}`;
       const addItemButton = document.getElementById("addItemButton");
-      const incrementValue = 2;
+      const incrementValue = 3;
       const addItem = () => {
         const newNumber = numbers[numbers.length - 1] + incrementValue;
         numbers.push(newNumber); // Add new number to array

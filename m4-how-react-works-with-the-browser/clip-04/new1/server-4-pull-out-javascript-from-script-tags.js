@@ -38,7 +38,7 @@ const requestHandler = (req, res) => {
           rootElement.innerHTML = \`\${generateListHTML(numbers)}\${generateButtonHTML()}\`;
 
           const addItemButton = document.getElementById("addItemButton");
-          const incrementValue = 2;
+          const incrementValue = 3;
           const addItem = () => {
             const newNumber = numbers[numbers.length - 1] + incrementValue;
             numbers.push(newNumber);
