@@ -1,6 +1,6 @@
 "use client";
 
-import { useSelectedItem } from "@/app/demo2/product-dropdown";
+import { useSelectedItem } from "@/app/demo3/product-dropdown";
 
 export default function ProductShow({ category, children }) {
   const { selectedItem } = useSelectedItem();
