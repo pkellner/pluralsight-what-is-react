@@ -11,11 +11,16 @@ export function useSharedData() {
   return contextValue;
 }
 
-export default function SharedDataProvider({ initialValue, children }) {
-  const [lastNumber, setLastNumber] = useState(initialValue);
+export default function SharedDataProvider({ initialLastNumber, children }) {
   const [newNumbers, setNewNumbers] = useState([]);
+
+  function addNewNumber(incrementValue) {
+    const lastNumber = newNumbers[newNumbers.length - 1] || initialLastNumber;
+    setNewNumbers([...newNumbers, lastNumber + incrementValue]);
+  }
+
   return (
-    <SharedDataContext.Provider value={{ lastNumber, setLastNumber, newNumbers, setNewNumbers }}>
+    <SharedDataContext.Provider value={{ newNumbers, addNewNumber }}>
       {children}
     </SharedDataContext.Provider>
   );

@@ -24,19 +24,12 @@ const server = http.createServer((req, res) => {
   res.write(`
     <!DOCTYPE html>
     <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Simple React App No JSX</title>
-    </head>
     <body>
       <div id="root">
         ${initialListHTML}
         ${buttonHTML}
       </div>
       <script>
-        // Access the global numbers array from the server
         const numbers = ${JSON.stringify(numbers)};
         const root = document.getElementById('root');
         const addItemButton = document.getElementById('addItemButton');
