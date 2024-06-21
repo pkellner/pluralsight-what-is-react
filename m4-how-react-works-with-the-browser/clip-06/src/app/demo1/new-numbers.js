@@ -4,11 +4,11 @@ import { useSharedData } from "./shared-data-provider";
 
 export default function NewNumbers() {
 
-  const { numbers } = useSharedData();
+  const { newNumbers } = useSharedData();
 
   return (
     <>
-      {numbers.map((number) => (
+      {newNumbers.map((number) => (
         <li key={number}>{number}</li>
       ))}
     </>

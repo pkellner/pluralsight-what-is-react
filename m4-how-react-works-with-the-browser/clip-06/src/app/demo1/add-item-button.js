@@ -2,14 +2,15 @@
 import { useSharedData } from "@/app/demo1/shared-data-provider";
 
 export default function AddItemButton() {
-  const { numbers, setNumbers } = useSharedData();
+  const { lastNumber, setLastNumber, newNumbers, setNewNumbers } = useSharedData();
+
   return (
     <div>
       <button
         onClick={() => {
-          const lastNumber = numbers[numbers.length - 1];
-          const newNumber = lastNumber + 3;
-          setNumbers([...numbers, newNumber]);
+          const newNumberVal = lastNumber + 3;
+          setLastNumber(newNumberVal);
+          setNewNumbers([...newNumbers, newNumberVal]);
         }}
       >
         Add Item

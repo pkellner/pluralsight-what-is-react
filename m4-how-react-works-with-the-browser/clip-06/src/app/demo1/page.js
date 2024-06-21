@@ -5,7 +5,7 @@ let numbers = [1, 2, 3, 4];
 export default async function Home() {
   return (
     <div>
-      <SharedDataProvider initialNumbers={numbers}>
+      <SharedDataProvider initialValue={numbers[numbers.length - 1]}>
         <ul>
           {numbers.map((number) => (
             <li>{number}</li>
