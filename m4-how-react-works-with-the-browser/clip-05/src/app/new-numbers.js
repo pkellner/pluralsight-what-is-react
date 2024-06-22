@@ -1,10 +1,11 @@
 'use client';
 
-import { useSharedData } from "./shared-data-provider";
+import { useSharedData } from
+  './shared-data-provider';
 
 export default function NewNumbers() {
-
-  const { newNumbers } = useSharedData();
+  const { newNumbers } =
+    useSharedData();
 
   return (
     <>
