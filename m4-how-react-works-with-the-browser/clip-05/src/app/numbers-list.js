@@ -6,7 +6,7 @@ export default async function NumbersList({
   return (
     <ul>
       {numbers.map((number) => (
-        <li>{number}</li>
+        <li key={number}>{number}</li>
       ))}
       <NewNumbers />
     </ul>
