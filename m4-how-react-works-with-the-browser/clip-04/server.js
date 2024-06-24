@@ -25,7 +25,8 @@ const server = http.createServer(async (req, res) => {
           const addItem = () => {
             const newNumber = numbers[numbers.length - 1] + incrementValue;
             numbers.push(newNumber); 
-            rootElement.querySelector("ul").insertAdjacentHTML("beforeend", \`<li>\${newNumber}</li>\`);
+            rootElement.querySelector("ul").insertAdjacentHTML
+              ("beforeend", \`<li>\${newNumber}</li>\`);
           };
           addItemButton.addEventListener("click", addItem);
         </script>
