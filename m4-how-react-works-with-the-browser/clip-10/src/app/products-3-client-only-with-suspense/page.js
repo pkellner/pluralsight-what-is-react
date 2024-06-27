@@ -1,4 +1,5 @@
 "use client";
+
 import { Suspense, use } from "react";
 import ProductsDisplay from "./products-display";
 import { getDataPromise } from "./getDataPromise";

@@ -1,10 +1,4 @@
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
-//   reference: https://react.dev/reference/react/Suspense#suspense
-
 let cache = new Map();
-
 export function getDataPromise(url) {
   if (!cache.has(url)) {
     cache.set(url, getData(url));
@@ -34,3 +28,8 @@ export default async function getData(url) {
     throw error;
   }
 }
+
+// Note: the way you would do data fetching depends on
+// the framework that you use together with Suspense.
+// Normally, the caching logic would be inside a framework.
+//   reference: https://react.dev/reference/react/Suspense#suspense
