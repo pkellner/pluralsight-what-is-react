@@ -7,6 +7,11 @@ export default function Page() {
             clip 7 demo - client only with state
           </a>
         </li>
+        <li>
+          <a href="http://localhost:3000/products-2-react-server-with-promise-and-suspense">
+            clip 7 demo - client only with state
+          </a>
+        </li>
       </ul>
     </div>
   );
