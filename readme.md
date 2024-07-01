@@ -2,6 +2,8 @@
 
 # IMPORTANT NOTICE: Updated Course: [What is React (Released June 2024)](https://www.pluralsight.com/library/courses/react-what-is/)
 
+![Update Course Release!](ImportantNotice.png)
+
 This course has been updated June 2024 to reflect the latest changes in React. It is focussed on what is available in React 19. As of the release
 of the course, React 19 is pending final production release. It was slightly delayed due to the new features being added to the Concurrent Mode, but
 nothing in this course is affected by that. The course is up to date with the latest features and changes in React 19. The major change to the course is that
