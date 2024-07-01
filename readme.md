@@ -1,5 +1,16 @@
 # Course Code for [What is React](https://pluralsight.com/courses/what-is-react) on Pluralsight
 
+# IMPORTANT NOTICE: Updated Course: [What is React (Released June 2024)](https://www.pluralsight.com/library/courses/react-what-is/)
+
+This course has been updated June 2024 to reflect the latest changes in React. It is focussed on what is available in React 19. As of the release
+of the course, React 19 is pending final production release. It was slightly delayed due to the new features being added to the Concurrent Mode, but
+nothing in this course is affected by that. The course is up to date with the latest features and changes in React 19. The major change to the course is that
+Module 4 has been completely rewritten to focus on the new Concurrent Mode features including React Server Components and Suspense for Data Fetching.
+
+You may notice that many of the package.json files reference React 18.3.1. This is because the course was recorded before React 19 was released. 
+The course is still up to date with the latest features and changes in React 19.
+As soon as React 19 is released, I will update the package.json files to reflect the latest version of React.
+
 ## OTHER Recently Released Courses From Peter Kellner
 
 | **Course**                                                                                                                 | Release Date  |
@@ -14,7 +25,7 @@
 
 <hr/>
 
-The master branch here is the latest updates to the Pluralsight course <b>What Is React</b>. This GitHub repo includes the final code for all the modules in the course.
+The main branch here is the latest updates to the Pluralsight course <b>What Is React</b>. This GitHub repo includes the final code for all the modules in the course.
 
 ## Course Description
 
@@ -24,7 +35,7 @@ In this course, What is React, you’ll learn all about the component based natu
 
 ## Getting Started
 1. **Install [Node 18.17 or later](https://nodejs.org)**.
-2. **Clone this repository.** - `https://github.com/pkellner/pluralsight-what-is-react` or [download the zip](https://github.com/pkellner/pluralsight-what-is-react/archive/master.zip)
+2. **Clone this repository.** - `https://github.com/pkellner/pluralsight-what-is-react` or [download the zip](https://github.com/pkellner/pluralsight-what-is-react/archive/main.zip)
 3. **Set your default directory to which module you want (example: `cd m3-hands-on-moving-to-concurrent-rendering` - `cd m4-hands-on-with-the-new-react-hooks`
 4. **Install Node Packages with Dependencies.** - `npm install`
 
