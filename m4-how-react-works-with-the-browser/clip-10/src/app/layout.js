@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./bootstrap.css";
+import "./table-custom.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

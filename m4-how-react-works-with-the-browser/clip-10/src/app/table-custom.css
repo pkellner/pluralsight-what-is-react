@@ -1,0 +1,55 @@
+/* table-custom.css */
+
+/* Style for the table */
+.table {
+    table-layout: fixed; /* Ensure consistent column widths */
+    width: 100%; /* Stretch the table to fill its container */
+    border-collapse: collapse; /* Ensure consistent border spacing */
+    margin-bottom: 2rem; /* Add space below the table */
+    margin-left: 2rem; /* Indent tables slightly for a refined look */
+}
+
+.table th,
+.table td {
+    word-wrap: break-word; /* Break words to avoid overflow */
+    overflow: hidden; /* Prevent content overflow */
+    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+    white-space: nowrap; /* Prevent wrapping for headers */
+    padding: 1rem; /* Add padding for better readability */
+    text-align: left; /* Align text to the left */
+}
+
+.table th {
+    background-color: #343a40; /* Dark background for headers */
+    color: #ffffff; /* White text for headers */
+    font-weight: bold;
+    border: 1px solid #dee2e6; /* Add borders to headers */
+}
+
+.table td {
+    border: 1px solid #dee2e6; /* Add borders to cells */
+}
+
+/* Add zebra striping for rows */
+.table tbody tr:nth-child(odd) {
+    background-color: #f8f9fa; /* Light gray for odd rows */
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #ffffff; /* White for even rows */
+}
+
+/* Style for stacked <h2> headers */
+h2 {
+    font-size: 1.5rem; /* Make headers visually distinct */
+    font-weight: bold;
+    margin-top: 2rem; /* Add space above the header */
+    margin-bottom: 1rem; /* Add space below the header */
+    color: #343a40; /* Dark text color */
+    margin-left: 1rem; /* Slight indentation for alignment with tables */
+}
+
+/* Add spacing between multiple tables */
+.table + h2 {
+    margin-top: 3rem; /* Add space above the next header */
+}

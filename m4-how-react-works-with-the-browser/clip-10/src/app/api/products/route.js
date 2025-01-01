@@ -11,12 +11,23 @@ async function runQuery(query) {
       }
     });
   });
-} 
+}
 
-export async function GET() {
-  const products = await runQuery(
-    "SELECT id, name, price, category FROM products"
-  );
+export async function GET(req) {
+  const { searchParams } = new URL(req.url);
+  const category = searchParams.get("category");
+
+  let sql = "SELECT id, name, price, category FROM products";
+  if (category) {
+    sql += ` WHERE category = '${category}'`;
+  }
+  sql += " ORDER BY category, name";
+
+  await new Promise((resolve) =>
+    setTimeout(resolve, Math.floor(Math.random() * 2000) + 1000),
+  ); // simulate random delay between 1-3 seconds
+
+  const products = await runQuery(sql);
 
   return new Response(JSON.stringify(products, null, 2), {
     status: 200,

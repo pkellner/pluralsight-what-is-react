@@ -16,6 +16,11 @@ export default function Page() {
           <a href="http://localhost:3000/products-3-client-only-with-suspense">
             clip 7 demo - client component only with no state
           </a>
+        </li>{" "}
+        <li>
+          <a href="http://localhost:3000/products-4-client-only-with-suspense-and-groups">
+            clip 7 demo - client component only with no state by group
+          </a>
         </li>
       </ul>
     </div>

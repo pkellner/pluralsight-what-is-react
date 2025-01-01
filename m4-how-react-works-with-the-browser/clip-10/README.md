@@ -15,4 +15,8 @@ npm install
 npm run dev
 ```
 
+# Note on Sqlite Database
+
+The warnings you see when running npm install are due to the sqlite3 package.
+
 
