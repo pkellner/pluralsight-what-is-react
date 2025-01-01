@@ -3,7 +3,7 @@
 /* Style for the table */
 .table {
     table-layout: fixed; /* Ensure consistent column widths */
-    width: 100%; /* Stretch the table to fill its container */
+    width: 95%; /* Stretch the table to fill its container */
     border-collapse: collapse; /* Ensure consistent border spacing */
     margin-bottom: 2rem; /* Add space below the table */
     margin-left: 2rem; /* Indent tables slightly for a refined look */
@@ -17,6 +17,7 @@
     white-space: nowrap; /* Prevent wrapping for headers */
     padding: 1rem; /* Add padding for better readability */
     text-align: left; /* Align text to the left */
+    margin-right: 2rem; /* Indent tables slightly for a refined look */
 }
 
 .table th {

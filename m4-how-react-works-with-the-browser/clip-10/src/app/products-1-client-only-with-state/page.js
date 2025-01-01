@@ -18,25 +18,27 @@ function ShowData() {
   if (loading) return <div>Loading...</div>;
 
   return loading ? (
-    <div>Loading...</div>
+    <div className="container">Loading...</div>
   ) : (
-    <div>
+    <div className="container">
       <button
         className="btn btn-primary mb-3"
         onClick={() => {
           setLoading(true);
+
           async function fetchData() {
             const response = await fetch("/api/products");
             const data = await response.json();
             setProducts(data);
             setLoading(false);
           }
+
           fetchData();
         }}
       >
         Retrieve Data
       </button>
-      <ProductsDisplay products={products} />
+      <ProductsDisplay products={products}/>
     </div>
   );
 }

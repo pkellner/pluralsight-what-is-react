@@ -5,7 +5,7 @@ import ProductsDisplay from "./products-display";
 
 export default function Page() {
   return (
-    <div>
+    <div className="container">
       <h1>Products</h1>
       <Suspense fallback={<div>Loading...</div>}>
         <ShowData category="Accessories" />
@@ -21,7 +21,7 @@ function ShowData({ category }) {
   return (
     <div>
       <h2>{category}</h2>
-      <Suspense fallback={<div className="ms-4">Loading {category}...</div>}>
+      <Suspense fallback={<div className="ms-5">Loading {category}...</div>}>
         <ProductsDisplay category={category} />
       </Suspense>
     </div>
