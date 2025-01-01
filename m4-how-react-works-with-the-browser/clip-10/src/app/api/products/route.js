@@ -24,7 +24,7 @@ export async function GET(req) {
   sql += " ORDER BY category, name";
 
   await new Promise((resolve) =>
-    setTimeout(resolve, Math.floor(Math.random() * 2000) + 1000),
+    setTimeout(resolve, Math.floor(Math.random() * 4000) + 1000),
   ); // simulate random delay between 1-3 seconds
 
   const products = await runQuery(sql);

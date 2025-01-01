@@ -21,7 +21,7 @@ function ShowData({ category }) {
   return (
     <div>
       <h2>{category}</h2>
-      <Suspense fallback={<div>Loading {category}...</div>}>
+      <Suspense fallback={<div className="ms-4">Loading {category}...</div>}>
         <ProductsDisplay category={category} />
       </Suspense>
     </div>
