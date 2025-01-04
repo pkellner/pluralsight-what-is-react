@@ -12,7 +12,7 @@ async function runQuery(query) {
 }
 export default async function Page() {
   return (
-    <div>
+    <div className="container mt-3">
       <h1>Products</h1>
       <Suspense fallback={<div>Loading...</div>}>
         <ShowData />
