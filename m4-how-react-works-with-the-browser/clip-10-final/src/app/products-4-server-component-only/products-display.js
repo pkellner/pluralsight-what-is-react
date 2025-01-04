@@ -1,8 +1,5 @@
-import { use } from "react";
-import {fetchDataPromise} from "./fetch-data-promise";
-
 export default function ProductsDisplay({products}) {
-
+  console.log("/products-display.js", products.length);
   return (
     <table className="table table-bordered table-hover">
       <thead className="table-dark">

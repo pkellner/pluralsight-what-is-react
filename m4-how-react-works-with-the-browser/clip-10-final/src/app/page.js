@@ -19,7 +19,12 @@ export default function Page() {
         </li>
         <li>
           <a href="http://localhost:3000/products-4-server-component-only">
-            clip 10 demo - react server with promise and suspense
+            clip 10 demo - react server component only
+          </a>
+        </li>
+        <li>
+          <a href="http://localhost:3000/products-5-server-component-to-client-component">
+            clip 10 demo - react server component to react client component
           </a>
         </li>
       </ul>
