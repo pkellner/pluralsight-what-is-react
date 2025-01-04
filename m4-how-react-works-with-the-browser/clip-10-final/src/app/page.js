@@ -17,6 +17,11 @@ export default function Page() {
             clip 9 demo - client only with suspense add useEffect
           </a>
         </li>
+        <li>
+          <a href="http://localhost:3000/products-4-server-component-only">
+            clip 10 demo - react server with promise and suspense
+          </a>
+        </li>
       </ul>
     </div>
   );
