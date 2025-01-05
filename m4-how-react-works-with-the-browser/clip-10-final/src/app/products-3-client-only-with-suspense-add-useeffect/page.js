@@ -1,14 +1,13 @@
 "use client";
-import {Suspense, useEffect, useState} from "react";
+import { Suspense, useEffect, useState } from "react";
 import ProductsDisplay from "./products-display";
 
 export default function Page() {
-
   const [show, setShow] = useState(false);
 
   useEffect(() => {
     setShow(true);
-  })
+  });
 
   return show ? (
     <div className="container mt-3">
@@ -19,7 +18,6 @@ export default function Page() {
 }
 
 function ShowData() {
-
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <div>

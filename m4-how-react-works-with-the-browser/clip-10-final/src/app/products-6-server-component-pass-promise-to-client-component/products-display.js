@@ -1,9 +1,8 @@
 "use client";
 
-import {use} from "react";
+import { use } from "react";
 
 export default function ProductsDisplay({ productsPromise }) {
-
   const products = use(productsPromise);
 
   return (

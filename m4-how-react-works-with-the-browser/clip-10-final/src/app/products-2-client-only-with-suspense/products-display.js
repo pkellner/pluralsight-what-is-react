@@ -1,9 +1,8 @@
 import { use } from "react";
-import {fetchDataPromise} from "./fetch-data-promise";
+import { fetchDataPromise } from "./fetch-data-promise";
 
 export default function ProductsDisplay() {
-
-  const productsPromise = fetchDataPromise("/api/products")
+  const productsPromise = fetchDataPromise("/api/products");
   const products = use(productsPromise);
 
   return (

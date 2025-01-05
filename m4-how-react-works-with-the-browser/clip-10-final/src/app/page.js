@@ -33,11 +33,6 @@ export default function Page() {
             client component
           </a>
         </li>
-        {/*<li>*/}
-        {/*  <a href="http://localhost:3000/products-7-client-component-call-server-function">*/}
-        {/*    (7) clip 10 demo - react client component call server function*/}
-        {/*  </a>*/}
-        {/*</li>*/}
       </ul>
     </div>
   );

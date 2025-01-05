@@ -1,4 +1,4 @@
-export default function ProductsDisplay({products}) {
+export default function ProductsDisplay({ products }) {
   return (
     <table className="table table-bordered table-hover">
       <thead className="table-dark">

@@ -1,5 +1,5 @@
 "use client";
-import {Suspense, useState} from "react";
+import { Suspense, useState } from "react";
 import ProductsDisplay from "./products-display";
 
 export default function Page() {
@@ -30,7 +30,6 @@ export default function Page() {
 }
 
 function ShowData() {
-
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <div>
