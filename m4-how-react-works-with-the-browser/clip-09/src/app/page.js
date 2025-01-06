@@ -1,5 +1,5 @@
 "use client";
-import { useState, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import ProductsDisplay from "./products-display";
 
 export default function Page() {
@@ -15,21 +15,14 @@ function ShowData() {
    
   const [show, setShow] = useState(false);
 
-   
+  useEffect(() => setShow(true), []);
 
   return !show ? (
-    <button
-      className="btn btn-primary mb-3"
-      onClick={() => {
-        setShow(true);
-      }}
-    >
-      Retrieve Data
-    </button>
+    null
   ) : (
     <div>
       <Suspense fallback={<div>loading...</div>}>
-        <ProductsDisplay products={products} />
+        <ProductsDisplay />
       </Suspense>
     </div>
   );
