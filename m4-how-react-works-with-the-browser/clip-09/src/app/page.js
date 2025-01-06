@@ -12,7 +12,11 @@ export default function Page() {
 }
 
 function ShowData() {
+   
   const [show, setShow] = useState(false);
+
+   
+
   return !show ? (
     <button
       className="btn btn-primary mb-3"
@@ -25,7 +29,7 @@ function ShowData() {
   ) : (
     <div>
       <Suspense fallback={<div>loading...</div>}>
-        <ProductsDisplay />
+        <ProductsDisplay products={products} />
       </Suspense>
     </div>
   );
