@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import ProductsDisplay from "./products-display";
 
 export default function Page() {
@@ -12,31 +12,21 @@ export default function Page() {
 }
 
 function ShowData() {
-  const [loading, setLoading] = useState(false);
-  const [products, setProducts] = useState([]);
-
-  if (loading) return <div>Loading...</div>;
-
-  return loading ? (
-    <div>Loading...</div>
+  const [show, setShow] = useState(false);
+  return !show ? (
+    <button
+      className="btn btn-primary mb-3"
+      onClick={() => {
+        setShow(true);
+      }}
+    >
+      Retrieve Data
+    </button>
   ) : (
     <div>
-      <button
-        className="btn btn-primary mb-3"
-        onClick={() => {
-          setLoading(true);
-          async function fetchData() {
-            const response = await fetch("/api/products");
-            const data = await response.json();
-            setProducts(data);
-            setLoading(false);
-          }
-          fetchData();
-        }}
-      >
-        Retrieve Data
-      </button>
-      <ProductsDisplay products={products} />
+      <Suspense fallback={<div>loading...</div>}>
+        <ProductsDisplay />
+      </Suspense>
     </div>
   );
 }
