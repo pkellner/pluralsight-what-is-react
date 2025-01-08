@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import ProductsDisplay from "./products-display-server-component";
+import ProductsDisplay from "./products-display";
 
 import sqlite3 from "sqlite3";
 const db = new sqlite3.Database("bikestore.db");
@@ -20,13 +20,13 @@ export default async function Page() {
     });
   });
 
-  const products = await productsPromise;
+  //const products = await productsPromise;
 
   return (
     <div>
       <h1>Products</h1>
       <Suspense fallback={<div>Loading...</div>}>
-        <ProductsDisplay products={products} />
+        <ProductsDisplay productsPromisep={productsPromise} />
       </Suspense>
     </div>
   );

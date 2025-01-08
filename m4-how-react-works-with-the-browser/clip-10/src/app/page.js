@@ -12,13 +12,13 @@ export default async function Page() {
     });
   });
 
-  const products = await productsPromise;
+  
 
   return (
     <div>
       <h1>Products</h1>
       <Suspense fallback={<div>Loading...</div>}>
-        <ProductsDisplay products={products} />
+        <ProductsDisplay productsPromise={productsPromise} />
       </Suspense>
     </div>
   );
