@@ -8,10 +8,6 @@ export const metadata = {
 
 export default function RootLayout({ Component, pageProps }) {
   return (
-    <html lang="en">
-      <body>
-        <Component {...pageProps} />
-      </body>
-    </html>
+    <Component {...pageProps} />
   );
 }
