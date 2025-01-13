@@ -1,13 +1,22 @@
-export default function Page() {
+import SharedDataProvider from './shared-data-provider';
+import AddItemButton from './add-item-button';
+import NumbersList from './numbers-list';
+
+const numbers = [1, 2, 3, 4, 5];
+
+export default async function Home() {
   return (
-    <div className="container mt-3">
-      <ul>
-        <li>
-          <a href="http://localhost:3000/products-1-client-only-with-state">
-            clip 7 demo - client only with state
-          </a>
-        </li>
-      </ul>
+    <div className="container">
+      <SharedDataProvider
+        initialLastNumber={
+          numbers[numbers.length - 1]
+        }
+      >
+        <NumbersList
+          numbers={numbers}
+        />
+        <AddItemButton increment={3} />
+      </SharedDataProvider>
     </div>
   );
 }
