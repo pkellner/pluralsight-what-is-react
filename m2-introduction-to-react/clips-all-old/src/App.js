@@ -20,7 +20,7 @@ export default function App() {
   return (
     <div className="container">
       <div className="row mb-1 ms-1 me-1 mt-2">
-        <AddForm addTask={addTask}></AddForm>
+        <AddForm addTask={addTask}></AddForm> 
       </div>
       <div className="row mb-3 ms-1 me-1 mt-3">
         <TodoItems entries={toDoList} deleteItem={deleteItem} />

@@ -1,22 +1,21 @@
 {
-  "name": "clips-all",
+  "name": "pluralsight-course-demo-what-is-react",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "bootstrap": "^5.3.3",
-    "next": "15.1.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "next": "^14.2.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "eslint": "^9",
-    "eslint-config-next": "15.1.4"
+    "eslint": "^8",
+    "eslint-config-next": "14.2.4"
   }
 }
