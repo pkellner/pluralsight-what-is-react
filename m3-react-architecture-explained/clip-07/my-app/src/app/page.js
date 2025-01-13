@@ -1,17 +1,12 @@
-'use client';
+"use client";
 export default function Home() {
-
   function ListItems() {
     const ints = [1, 2, 3];
     return (
       <>
-        {
-          ints.map(id => {
-            return (
-              <li>{id}</li>
-            )
-          })
-        }
+        {ints.map((id) => {
+          return <li>{id}</li>;
+        })}
       </>
     );
   }

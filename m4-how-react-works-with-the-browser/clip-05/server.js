@@ -3,11 +3,9 @@ const http = require("http");
 const numbers = [1, 2, 3, 4, 5];
 const generateListHTML = (numbers) =>
   `<ul>${numbers.map((number) => `<li>${number}</li>`).join("")}</ul>`;
-const generateButtonHTML = () =>
-  '<button id="addItemButton">Add Item</button>';
+const generateButtonHTML = () => '<button id="addItemButton">Add Item</button>';
 
 const server = http.createServer(async (req, res) => {
-
   const initialListHTML = generateListHTML(numbers);
   const buttonHTML = generateButtonHTML();
 

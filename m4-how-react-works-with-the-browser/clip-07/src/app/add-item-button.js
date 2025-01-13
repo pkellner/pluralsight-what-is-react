@@ -1,13 +1,9 @@
-'use client';
+"use client";
 
-import { useSharedData } from
-  './shared-data-provider';
+import { useSharedData } from "./shared-data-provider";
 
-export default function AddItemButton({
-  increment,
-}) {
-  const { addNewNumber } =
-    useSharedData();
+export default function AddItemButton({ increment }) {
+  const { addNewNumber } = useSharedData();
   return (
     <div>
       <button

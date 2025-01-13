@@ -12,14 +12,11 @@ export default function Page() {
 }
 
 function ShowData() {
-   
   const [show, setShow] = useState(false);
 
   useEffect(() => setShow(true), []);
 
-  return !show ? (
-    null
-  ) : (
+  return !show ? null : (
     <div>
       <Suspense fallback={<div>loading...</div>}>
         <ProductsDisplay />

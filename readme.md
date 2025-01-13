@@ -9,7 +9,7 @@ around using React Server Components with Suspense and promises. This includes r
 in the Node server, as well as the very powerful scenario where the data is downloaded in the node server, and then automatically sent to the React 
 client without ever having to go through an REST server.
 
-All examples in this repository are converted to React 19.0.0 production
+All examples in this repository are converted to React 19.0.0 production.
 
 **The new Clips are Module 4, Clip 9 and Clip 10. Both, compleletely new!**
 

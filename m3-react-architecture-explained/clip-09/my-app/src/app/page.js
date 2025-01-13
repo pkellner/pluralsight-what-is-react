@@ -1,20 +1,16 @@
-'use client';
+"use client";
 import { useState } from "react";
 export default function Home() {
-  function ListItems({ints, addValue}) {
+  function ListItems({ ints, addValue }) {
     const increment = 3;
     return (
       <>
         <button onClick={() => addValue(increment)}>Add Item</button>
-        {
-          ints.map(id => {
-            return (
-              <li key={id}>{id}</li>
-            )
-          })
-        }
+        {ints.map((id) => {
+          return <li key={id}>{id}</li>;
+        })}
       </>
-    )
+    );
   }
 
   //const ints = [1, 2, 3];
@@ -27,5 +23,5 @@ export default function Home() {
     <ul>
       <ListItems ints={ints} addValue={addValue} />
     </ul>
-  )
+  );
 }

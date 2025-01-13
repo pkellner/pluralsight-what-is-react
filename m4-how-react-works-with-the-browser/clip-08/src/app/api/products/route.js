@@ -11,11 +11,11 @@ async function runQuery(query) {
       }
     });
   });
-} 
+}
 
 export async function GET() {
   const products = await runQuery(
-    "SELECT id, name, price, category FROM products"
+    "SELECT id, name, price, category FROM products",
   );
 
   return new Response(JSON.stringify(products, null, 2), {
