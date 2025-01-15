@@ -11,7 +11,7 @@ client without ever having to go through an REST server.
 
 All examples in this repository are converted to React 19.0.0 production.
 
-** *The new Clips are Module 4, Clip 9 and Clip 10. Both, completely new!**
+** The new Clips are Module 4, Clip 9 and Clip 10. Both, completely new!
 
 ## OTHER Recently Released Courses From Peter Kellner
 
