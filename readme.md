@@ -2,22 +2,22 @@
 
 ![Update Course Release!](ImportantNotice.png)
 
-Updated Course: [What is React (Released June 2024)](https://www.pluralsight.com/library/courses/react-what-is/)
+Updated Course: [What is React (Released January 2025)](https://www.pluralsight.com/library/courses/react-what-is/)
 
-This course has been updated January 2025 to reflect the latest changes in React 19 production. It includes completely a completely new discussion
-around using React Server Components with Suspense and promises. This includes running React Server Components where the data is retrieve and rendered
+This course has been updated to reflect the latest changes in React 19 production. It includes completely a completely new discussion
+around using React Server Components with Suspense and promises*. This includes running React Server Components where the data is retrieve and rendered
 in the Node server, as well as the very powerful scenario where the data is downloaded in the node server, and then automatically sent to the React 
 client without ever having to go through an REST server.
 
 All examples in this repository are converted to React 19.0.0 production.
 
-**The new Clips are Module 4, Clip 9 and Clip 10. Both, compleletely new!**
+** *The new Clips are Module 4, Clip 9 and Clip 10. Both, completely new!**
 
 ## OTHER Recently Released Courses From Peter Kellner
 
 | **Course**                                                                                                                 | Release Date  |
 |----------------------------------------------------------------------------------------------------------------------------|---------------|
-| **[What is React](https://pluralsight.com/courses/react-what-is/)**  *(this course)*                                       | July 2024     |
+| **[What is React](https://pluralsight.com/courses/react-what-is/)**  *(this course)*                                       | January 2025  |
 | **[Working With Data in React](http://www.pluralsight.com/courses/react-working-data)**                                    | February 2024 |
 | **[Server Component Fundamentals in React 18](http://www.pluralsight.com/courses/react-18-server-component-fundamentals)** | June 2023     |
 | **[Working with Components in React 18](https://pluralsight.com/courses/react-18-working-components/)**                    | February 2023 |
