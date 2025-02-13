@@ -17,6 +17,7 @@ __The new Clips are Module 4, Clip 9 and Clip 10. Both, completely new__
 
 | **Course**                                                                                                                 | Release Date  |
 |----------------------------------------------------------------------------------------------------------------------------|---------------|
+| **[AI-Powered React Applications: Building Intelligent Interfaces](https://app.pluralsight.com/library/courses/ai-powered-react-applications-building-intelligent-interfaces/)**  | February 2025 |
 | **[What is React](https://pluralsight.com/courses/react-what-is/)**  *(this course)*                                       | January 2025  |
 | **[Working With Data in React](http://www.pluralsight.com/courses/react-working-data)**                                    | February 2024 |
 | **[Server Component Fundamentals in React 18](http://www.pluralsight.com/courses/react-18-server-component-fundamentals)** | June 2023     |
